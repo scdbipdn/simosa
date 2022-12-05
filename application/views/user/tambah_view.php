@@ -1,18 +1,19 @@
 <?php if (!defined('BASEPATH')) exit('No direct script acess allowed'); ?>
-<div class="content-wrapper">
+<div class="content-wrapper" style='padding:20px;'>
     <section class="content-header">
         <h1>
-            <i class="fa fa-plus" style="color:green"> </i> Tambah User
+            <i class="fa fa-plus" style="color:crimson"> </i> Tambah User
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo base_url('dashboard'); ?>"><i class="fa fa-dashboard"></i>&nbsp; Dashboard</a></li>
             <li class="active"><i class="fa fa-plus"></i>&nbsp; Tambah User</li>
         </ol>
     </section>
-    <section class="content">
-        <div class="row">
+    <br>
+    <section class="content panel">
+        <div class="row panel-body">
             <div class="col-md-12">
-                <div class="box box-primary">
+                <div class="box box-danger">
                     <div class="box-header with-border">
                     </div>
                     <!-- /.box-header -->
@@ -75,9 +76,9 @@
                                 </div>
                             </div>
                             <div class="pull-right">
-                                <button type="submit" class="btn btn-primary btn-md">Submit</button>
+                                <button type="submit" class="btn btn-primary bg-merah btn-md">Submit</button>
                         </form>
-                        <a href="<?= base_url('user'); ?>" class="btn btn-danger btn-md">Kembali</a>
+                        <a href="<?= base_url('user'); ?>" class="btn btn-danger bg-biru btn-md">Kembali</a>
                     </div>
                 </div>
             </div>

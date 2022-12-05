@@ -4,6 +4,32 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
+       
+                
+
+        <div class="biodata-kiri">
+
+            <?php
+            $d = $this->db->query("SELECT * FROM tbl_login WHERE id_login='$idbo'")->row();
+            if (!empty($d->foto)) {
+            ?>
+                <br />
+                <center>
+                <img src="<?php echo base_url(); ?>assets_style/image/<?php echo $d->foto; ?>" alt="#" class="img-thumbnail" style="border:2px solid #fff;height:auto;width:70%;" />
+                </center>
+            <?php } else { ?>
+                <!--<img src="" alt="#" class="user-image" style="border:2px solid #fff;"/>-->
+                <i class="fa fa-user fa-4x" style="color:#fff;"></i>
+            <?php } ?>
+            <p class='biodata-nama'><?php echo $d->nama; ?></p>
+            <p>
+                <span class="label label-success biodata-level">
+                    <?= $d->level; ?>
+                </span>
+            </p>
+            <p class='biodata-kondisi'><i class="fa fa-circle text-success"></i> Online</p>
+        </div>
+        <!--
         <div class="user-panel">
             <div class="pull-left image">
                 <?php
@@ -13,13 +39,16 @@
                     <br />
                     <img src="<?php echo base_url(); ?>assets_style/image/<?php echo $d->foto; ?>" alt="#" c lass="user-image" style="border:2px solid #fff;height:auto;width:100%;" />
                 <?php } else { ?>
-                    <!--<img src="" alt="#" class="user-image" style="border:2px solid #fff;"/>-->
+                    
                     <i class="fa fa-user fa-4x" style="color:#fff;"></i>
                 <?php } ?>
             </div>
             <div class="pull-left info" style="margin-top: 5px;">
-                <p><?php echo $d->nama; ?></p>
-                <p><?= $d->level; ?>
+                <p><?php echo $d->user; ?></p>
+                <p>
+                    <span class="label label-success">
+                        <?= $d->level; ?>
+                    </span>
                 </p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -28,6 +57,7 @@
             <br />
             <br />
         </div>
+        -->
         <ul class="sidebar-menu" data-widget="tree">
             <?php if ($this->session->userdata('level') == 'Petugas') { ?>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -205,7 +235,13 @@
                         <i class="fa fa-print"></i> <span>Cetak kartu Anggota</span>
                     </a> -->
                 </li>
+                
             <?php } ?>
+            <li class="">
+                <a href="<?php echo base_url();?>login/logout">
+                    <i class="fa fa-sign-out"></i> <span>Keluar</span>
+                </a>
+            </li>
         </ul>
         <div class="clearfix"></div>
         <br />

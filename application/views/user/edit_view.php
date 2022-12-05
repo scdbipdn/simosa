@@ -1,22 +1,23 @@
 <?php if (!defined('BASEPATH')) exit('No direct script acess allowed'); ?>
-<div class="content-wrapper">
+<div class="content-wrapper" style='padding:20px;'>
     <section class="content-header">
         <h1>
-            <i class="fa fa-edit" style="color:green"> </i> Update User - <?= $user->nama; ?>
+            <i class="fa fa-edit" style="color:crimson;"> </i> Update User - <?= $user->nama; ?>
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo base_url('dashboard'); ?>"><i class="fa fa-dashboard"></i>&nbsp; Dashboard</a></li>
             <li class="active"><i class="fa fa-edit"></i>&nbsp; Update User - <?= $user->nama; ?></li>
         </ol>
     </section>
-    <section class="content">
-        <div class="row">
+    <br>
+    <section class="content panel">
+        <div class="row panel-body">
             <div class="col-md-12">
                 <?php if (!empty($this->session->flashdata())) {
                     echo $this->session->flashdata('pesan');
                 } ?>
 
-                <div class="box box-primary">
+                <div class="box box-danger">
                     <div class="box-header with-border">
                     </div>
                     <!-- /.box-header -->
@@ -98,10 +99,10 @@
                                 </div>
                             </div>
                             <div class="pull-right">
-                                <button type="submit" class="btn btn-primary btn-md">Edit Data</button>
+                                <button type="submit" class="btn btn-primary bg-merah btn-md">Edit Data</button>
                         </form>
                         <?php if ($this->session->userdata('level') == 'Petugas') { ?>
-                            <a href="<?= base_url('user'); ?>" class="btn btn-danger btn-md">Kembali</a>
+                            <a href="<?= base_url('user'); ?>" class="btn btn-danger bg-biru btn-md">Kembali</a>
                         <?php } elseif ($this->session->userdata('level') == 'Anggota') { ?>
                             <a href="<?= base_url('transaksi'); ?>" class="btn btn-danger btn-md">Kembali</a>
                         <?php } ?>

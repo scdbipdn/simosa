@@ -1,23 +1,24 @@
 <?php if (!defined('BASEPATH')) exit('No direct script acess allowed'); ?>
-<div class="content-wrapper">
+<div class="content-wrapper" style='padding:20px;'>
     <section class="content-header">
         <h1>
-            <i class="fa fa-edit" style="color:green"> </i> Daftar Data Praja
+            <i class="fa fa-edit" style="color:crimson;"> </i> Daftar Data Praja
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo base_url('dashboard'); ?>"><i class="fa fa-dashboard"></i>&nbsp; Dashboard</a></li>
             <li class="active"><i class="fa fa-file-text"></i>&nbsp; Daftar Data Praja</li>
         </ol>
     </section>
-    <section class="content">
+    <br>
+    <section class="content panel" >
         <?php if (!empty($this->session->flashdata())) {
             echo $this->session->flashdata('pesan');
         } ?>
-        <div class="row">
+        <div class="row panel-body">
             <div class="col-md-12">
-                <div class="box box-primary">
+                <div class="box box-danger">
                     <div class="box-header with-border">
-                        <a href="user/tambah"><button class="btn btn-primary"><i class="fa fa-plus"> </i> Tambah User</button></a>
+                        <a href="user/tambah" class="btn bg-merah teks-putih"><i class="fa fa-plus"> </i> Tambah User</a>
 
                     </div>
                     <!-- /.box-header -->
@@ -26,7 +27,7 @@
                             <br />
                             <table id="example1" class="table table-bordered table-striped table" width="100%">
                                 <thead>
-                                    <tr>
+                                    <tr class="bg-merah teks-putih">
                                         <th>No</th>
                                         <th>ID</th>
                                         <th>Foto</th>

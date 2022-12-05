@@ -88,6 +88,7 @@
 <script src="<?php echo base_url(); ?>assets_style/assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- bootstrap time picker -->
 <script src="<?php echo base_url(); ?>assets_style/assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+
 </body>
 
 </html>

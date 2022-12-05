@@ -9,7 +9,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="shortcut icon" href="" />
+  <link rel="shortcut icon" href="<?= base_url('assets_style/image/logo/logo-ipdn.png') ?>" />
   <link rel="stylesheet" href="<?php echo base_url('assets_style/assets/bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url('assets_style/assets/bower_components/font-awesome/css/font-awesome.min.css'); ?>">
@@ -48,20 +48,23 @@
       }
     }
   </style>
+
+  <!--penambahan-->
+  <link rel="stylesheet" href="<?php echo base_url('assets_style/assets/kustomisasi/css/tambahan.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets_style/assets/kustomisasi/css/perloginan.css'); ?>">
 </head>
 
-<body class="hold-transition login-page" style="overflow-y: hidden;background:url(
-	'<?php echo base_url('assets_style/image/buku-1.jpg'); ?>')no-repeat;background-size:100%;">
-  <div class="login-box">
-    <br />
-    <div class="login-logo">
-      <a href="index.php" style="color: White;"><b>SISTEM INFORMASI MONITORING BEASISWA<br /></a>
-    </div>
-    <div id="tampilalert"></div>
-    <!-- /.login-logo -->
-    <div class="login-box-body" style="border:2px solid #226bbf;">
-      <p class="login-box-msg" style="font-size:16px;"></p>
-      <form action="<?= base_url('login/auth'); ?>" method="POST">
+<body>
+
+    <div class="container kontener">
+      <form action="<?= base_url('/login/auth'); ?>" method="POST">
+
+        <center>
+            <img src="<?= base_url('assets_style/image/logo/logo-ipdn.png') ?>" width="30%" alt="">
+            <h1>SIMOSA</h1>
+            <h4>Sistem Informasi Monitoring Beasiswa</h4>
+        </center>
+
         <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder="Username" id="user" name="user" required="required" autocomplete="off">
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -74,29 +77,19 @@
           <div class="col-xs-4">
 
           </div>
-          <div class="col-xs-5">
-            <a href="<?= base_url('regis'); ?>" id="loding" class="btn btn-primary btn-block btn-flat">Create Account</a>
+          <div class="col-xs-4">
+            <a href="<?= base_url('regis'); ?>" id="loding" class="btn btn-primary bg-biru tombol-login btn-block btn-flat">Daftar</a>
             <div id="loadingcuy"></div>
           </div>
-          <div class="col-xs-3">
-            <button type="submit" id="loding" class="btn btn-info btn-block btn-flat">Sign In</button>
+          <div class="col-xs-4">
+            <button type="submit" id="loding" class="btn btn-info bg-merah tombol-login btn-block btn-flat">Login</button>
             <div id="loadingcuy"></div>
           </div>
           <!-- /.col -->
         </div>
       </form>
     </div>
-    <!-- /.login-box-body -->
-    <br />
-    <footer>
-      <div class="login-box-body text-center bg-blue">
-        <a style="color: White;"> Copyright &copy; Sistem Informasi Monitoring Beasiswa <?php echo date("Y"); ?>
-      </div>
-    </footer>
-  </div>
-  <!-- /.login-box -->
-  <!-- Response Ajax -->
-  <div id="tampilkan"></div>
+
   <!-- jQuery 3 -->
   <script src="<?php echo base_url('assets_style/assets/bower_components/jquery/dist/jquery.min.js'); ?>"></script>
   <!-- Bootstrap 3.3.7 -->

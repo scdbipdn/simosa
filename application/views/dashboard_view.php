@@ -5,8 +5,8 @@
 } ?>
 <!-- Content Wrapper. Contains page content -->
 <!-- Content Header (Page header) -->
-<div class="content-wrapper">
-  <section class="content-header">
+<div class="content-wrapper" style='padding:20px;'>
+  <section class="content-header" style='margin-bottom:10px;'>
     <h1>
       Dashboard <small>Control panel</small>
     </h1>
@@ -16,9 +16,10 @@
     </ol>
   </section>
   <!-- Main content -->
-  <section class="content">
+  <section class="content panel">
     <!-- Small boxes (Stat box) -->
-    <div class="row">
+    
+    <div class="row panel-body">
       <div class="col-sm-12">
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-aqua">
@@ -79,6 +80,7 @@
 
       </div>
     </div>
+   
   </section>
 </div>
 <!-- /.content -->
