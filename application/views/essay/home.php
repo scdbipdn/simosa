@@ -1,0 +1,91 @@
+<?php if (!defined('BASEPATH')) exit('No direct script acess allowed'); ?>
+<?php
+$bulan_tes = array(
+	'01' => "Januari",
+	'02' => "Februari",
+	'03' => "Maret",
+	'04' => "April",
+	'05' => "Mei",
+	'06' => "Juni",
+	'07' => "Juli",
+	'08' => "Agustus",
+	'09' => "September",
+	'10' => "Oktober",
+	'11' => "November",
+	'12' => "Desember"
+);
+?>
+<div class="content-wrapper">
+	<section class="content-header">
+		<h1>
+			<i class="fa fa-edit" style="color:green"> </i> <?= $title_web; ?>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="<?php echo base_url('dashboard'); ?>"><i class="fa fa-dashboard"></i>&nbsp; Dashboard</a></li>
+			<li class="active"><i class="fa fa-file-text"></i>&nbsp; <?= $title_web; ?></li>
+		</ol>
+	</section>
+	<section class="content">
+		<?php if (!empty($this->session->flashdata())) {
+			echo $this->session->flashdata('pesan');
+		} ?>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+						<div class="table-responsive">
+							<?php if (empty($essay->result())) {
+								echo '<div class="box-header with-border">
+								<a href="' . base_url("essay/show_edit/") . '"><button class="btn btn-primary"><i class="fa fa-plus"> </i> Tambah Essay</button></a>
+							</div>';
+							} ?>
+							<table id="example1" class="table table-bordered table-striped table" width="100%">
+								<thead>
+									<tr>
+										<th>No</th>
+										<th>Judul</th>
+										<th>Aksi</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php
+									$no = 1;
+									foreach ($essay->result_array() as $isi) {
+										$anggota_id = $isi['id_praja'];
+										$ang = $this->db->query("SELECT * FROM tbl_login WHERE anggota_id = '$anggota_id'")->row();
+									?>
+										<tr>
+											<td><?= $no; ?></td>
+											<td><?= $isi['judul']; ?></td>
+											<td>
+												<?php if ($this->session->userdata('level') == 'Petugas') { ?>
+													<a href="<?= base_url('essay/show/' . $isi['id_essay']); ?>" class="btn btn-primary btn-sm" title="detail pinjam">
+														<i class="fa fa-eye"></i></button></a>
+													<a href="<?= base_url('essay/prosespinjam?id_essay=' . $isi['id_essay']); ?>" onclick="return confirm('Anda yakin Peminjaman Ini akan dihapus ?');" class="btn btn-danger btn-sm" title="hapus pinjam">
+														<i class="fa fa-trash"></i></a>
+												<?php } else { ?>
+													<a href="<?= base_url('essay/show_edit/' . $isi['id_essay']); ?>" class="btn btn-primary btn-sm" title="detail pinjam">
+														<i class="fa fa-eye"></i> Detail Essay</a>
+												<?php } ?>
+											</td>
+											</td>
+
+										</tr>
+									<?php $no++;
+									} ?>
+								</tbody>
+							</table>
+						</div>
+						<script>
+							CKEDITOR.replace('essay')
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+</section>
+</div>
