@@ -40,7 +40,7 @@ $bulan_tes = array(
 						<div class="table-responsive">
 
 							<div class="box-header with-border">
-								<a href="<?= base_url("essay/show_edit/") ?>"><button class="btn btn-primary bg-merah teks-putih"><i class="fa fa-plus"> </i> Tambah Essay</button></a>
+								<a href="<?= base_url("artikel/add/") ?>"><button class="btn btn-primary bg-merah teks-putih"><i class="fa fa-plus"> </i> Tambah Artikel</button></a>
 							</div>
 
 							<table id="example1" class="table table-bordered table-striped table" width="100%">
@@ -48,28 +48,28 @@ $bulan_tes = array(
 									<tr class=' bg-merah teks-putih'>
 										<th>No</th>
 										<th>Judul</th>
+										<th>Kategori</th>
+										<th>Status</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
 									<?php
 									$no = 1;
-									foreach ($essay->result_array() as $isi) {
-										$anggota_id = $isi['id_praja'];
-										$ang = $this->db->query("SELECT * FROM tbl_login WHERE anggota_id = '$anggota_id'")->row();
+									foreach ($data_artikel as $data) {
 									?>
 										<tr>
 											<td><?= $no; ?></td>
-											<td><?= $isi['judul']; ?></td>
+											<td><?= $data['judul']; ?></td>
+											<td><?= $data['kategori']; ?></td>
+											<td><?= $data['status']; ?></td>
 											<td>
 												<?php if ($this->session->userdata('level') == 'Petugas') { ?>
-													<a href="<?= base_url('essay/show/' . $isi['id_essay']); ?>" class="btn btn-primary btn-sm" title="detail pinjam">
-														<i class="fa fa-eye"></i></button></a>
-													<a href="<?= base_url('essay/prosespinjam?id_essay=' . $isi['id_essay']); ?>" onclick="return confirm('Anda yakin menghapus essay ini ?');" class="btn btn-danger btn-sm" title="hapus pinjam">
-														<i class="fa fa-trash"></i></a>
-												<?php } else { ?>
-													<a href="<?= base_url('essay/show_edit/' . $isi['id_essay']); ?>" class="btn btn-primary bg-biru btn-sm" title="detail pinjam">
-														<i class="fa fa-eye"></i> Detail Essay</a>
+													<a href="<?= base_url('artikel/show/' . $data['id_artikel']); ?>" class="btn btn-primary btn-sm" title="detail pinjam">
+														<i class="fa fa-eye"></i> Detail</button></a>
+													<a href="<?= base_url('artikel/edit/' . $data['id_artikel']); ?>"><button class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</button></a>
+													<a href="<?= base_url('artikel/del/' . $data['id_artikel']); ?>" onclick="return confirm('Anda yakin user akan dihapus ?');">
+														<button class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</button></a>
 												<?php } ?>
 											</td>
 											</td>

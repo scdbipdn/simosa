@@ -71,6 +71,29 @@
   setTimeout(logingagal, 4000);
 </script>
 
+<script>
+  CKEDITOR.replace('keterangan', {
+    extraPlugins: 'wordcount, footnotes, lineheight',
+
+  })
+</script>
+
+
+<script>
+  CKEDITOR.replace('essay', {
+    extraPlugins: 'wordcount, footnotes, lineheight',
+
+  })
+</script>
+
+<script>
+  CKEDITOR.replace('isi', {
+    extraPlugins: 'wordcount, footnotes, lineheight',
+
+  })
+</script>
+
+
 <!-- custom jQuery -->
 <script src="<?php echo base_url(); ?>assets_style/assets/dist/js/custom.js"></script>
 

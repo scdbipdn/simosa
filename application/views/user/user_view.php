@@ -10,7 +10,7 @@
         </ol>
     </section>
     <br>
-    <section class="content panel" >
+    <section class="content panel">
         <?php if (!empty($this->session->flashdata())) {
             echo $this->session->flashdata('pesan');
         } ?>
@@ -63,9 +63,9 @@
                                             <td><?= $isi['level']; ?></td>
                                             <td><?= $isi['alamat']; ?></td>
                                             <td style="width:20%;">
-                                                <a href="<?= base_url('user/edit/' . $isi['id_login']); ?>"><button class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                                                <a href="<?= base_url('user/edit/' . $isi['id_login']); ?>"><button class="btn btn-success"><i class="fa fa-edit"></i> Edit</button></a>
                                                 <a href="<?= base_url('user/del/' . $isi['id_login']); ?>" onclick="return confirm('Anda yakin user akan dihapus ?');">
-                                                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
+                                                    <button class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</button></a>
 
                                             </td>
                                         </tr>

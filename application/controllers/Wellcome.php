@@ -28,6 +28,8 @@ class Wellcome extends CI_Controller
      */
     public function index()
     {
+
+        $this->data['tentang_kami'] = $this->db->query("SELECT * FROM tbl_tentang_kami WHERE `status` = 1")->row();
         $this->data['title_web'] = 'Sistem Informasi Beasiswa';
         $this->load->view('index', $this->data);
     }

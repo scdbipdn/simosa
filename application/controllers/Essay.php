@@ -166,7 +166,7 @@ class Essay extends CI_Controller
                 $this->db->insert('tbl_essay', $data);
 
                 $telegram_id = '-832985315';
-                $message_text = 'Telah di perbaharui oleh **' . $d['nama'] . '** untuk essay dengan judul __' . $data['judul'] . '__ atas nama **' . $d['nama'] . '**';
+                $message_text = 'Telah di tambahkan oleh **' . $d['nama'] . '** untuk essay dengan judul __' . $data['judul'] . '__ atas nama **' . $d['nama'] . '**';
                 $secret_token = '5804522084:AAH4QIIQhtxLtaCSpmwc0vlPUBJ0FYz-uLk';
                 $url = "https://api.telegram.org/bot" . $secret_token . "/sendMessage?parse_mode=markdown&chat_id=" . $telegram_id;
                 $url = $url . "&text=" . urlencode($message_text);

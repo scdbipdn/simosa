@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script acess allowed');
 
-class M_Admin extends CI_Model
+class M_Artikel extends CI_Model
 {
   function __construct()
   {
@@ -18,7 +18,7 @@ class M_Admin extends CI_Model
   {
     $this->db->where($where, $id);
     $edit = $this->db->get($table_name);
-    return $edit->result_array();
+    return $edit->row();
   }
 
   function get_tableid_edit($table_name, $where, $id)

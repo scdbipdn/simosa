@@ -127,8 +127,8 @@
                             <h6 class="position-relative text-primary ps-4">Tentang Kami</h6>
                             <h2 class="mt-2">Sistem Informasi & Monitoring Beasiswa (SIMOSA)</h2>
                         </div>
-                        <p class="mb-4">Sistem Informasi & Monitoring Beasiswa (SIMOSA) adalah </p>
-                        <div class="row g-3">
+                        <p class="mb-4"><?= $tentang_kami->keterangan; ?></p>
+                        <!-- <div class="row g-3">
                             <div class="col-sm-6">
                                 <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Award Winning</h6>
                                 <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Professional Staff</h6>
@@ -137,7 +137,7 @@
                                 <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>24/7 Support</h6>
                                 <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Fair Prices</h6>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="d-flex align-items-center mt-4">
                             <a class="btn btn-primary rounded-pill px-4 me-3" href="">Read More</a>
                             <a class="btn btn-outline-primary btn-square me-3" href=""><i class="fab fa-facebook-f"></i></a>
