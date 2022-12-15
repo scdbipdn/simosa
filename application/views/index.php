@@ -30,7 +30,34 @@
 
     <!-- Template Stylesheet -->
     <link href="<?= base_url() ?>assets_style/assets_depan/css/style.css" rel="stylesheet">
+
+    <style>
+        @media screen and (min-width: 450px) {
+            #pagination {
+                display: block;
+                margin-left: 100%;
+            }
+        }
+
+        /*untuk layar device berukuran sedang*/
+        @media screen and (min-width: 550px) {
+            #pagination {
+                display: block;
+                margin-left: 100%;
+            }
+        }
+
+        /*untuk layar device berukuran besar*/
+        @media screen and (min-width: 800px) {
+            #pagination {
+                display: block;
+                margin-left: 35%;
+            }
+        }
+    </style>
+
 </head>
+
 
 <body>
     <div class="container-xxl bg-white p-0">
@@ -183,71 +210,114 @@
                     <h6 class="position-relative d-inline text-primary ps-4">Artikel</h6>
                     <h2 class="mt-2">Artikel Sistem Informasi & Monitoring Beasiswa</h2>
                 </div>
-                <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <i class="fa fa-home fa-2x"></i>
+                <div class="row g-12">
+
+
+                    <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
+                        <div class="container">
+                            <div class="card">
+                                <div class="card-body">
+                                    <!-- Posts List -->
+                                    <table class="table table-borderd" id='postsList'>
+                                        <tbody></tbody>
+                                    </table>
+
+                                    <!-- Paginate -->
+                                    <!-- <div id='pagination'></div> -->
+                                </div>
                             </div>
-                            <h5 class="mb-3">SEO Optimization</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
                         </div>
+
+
+
                     </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <i class="fa fa-home fa-2x"></i>
-                            </div>
-                            <h5 class="mb-3">Web Design</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <i class="fa fa-home fa-2x"></i>
-                            </div>
-                            <h5 class="mb-3">Social Media Marketing</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <i class="fa fa-home fa-2x"></i>
-                            </div>
-                            <h5 class="mb-3">Email Marketing</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <i class="fa fa-home fa-2x"></i>
-                            </div>
-                            <h5 class="mb-3">PPC Advertising</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <i class="fa fa-home fa-2x"></i>
-                            </div>
-                            <h5 class="mb-3">App Development</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
+
+        <div id='pagination'></div>
+
+
         <!-- Service End -->
+
+
+
+
+        <!-- Script -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type='text/javascript'>
+            $(document).ready(function() {
+
+                $('#pagination').on('click', 'a', function(e) {
+                    e.preventDefault();
+                    var pageno = $(this).attr('data-ci-pagination-page');
+                    loadPagination(pageno);
+                });
+
+                loadPagination(0);
+
+                function loadPagination(pagno) {
+                    $.ajax({
+                        url: '<?= base_url() ?>Wellcome/loadRecord/' + pagno,
+                        type: 'get',
+                        dataType: 'json',
+                        success: function(response) {
+                            $('#pagination').html(response.pagination);
+                            createTable(response.result, response.row);
+                        }
+                    });
+                }
+
+                function createTable(result, sno) {
+                    sno = Number(sno);
+                    $('#postsList tbody').empty();
+                    for (index in result) {
+                        var id_artikel = result[index].id_artikel;
+                        var judul = result[index].judul;
+                        var foto = "<?php echo base_url('assets_style/image/'); ?>" + result[index].img;
+
+
+                        sno += 1;
+
+
+                        sno += 1;
+
+                        var tr = "<div class='card' style='width: 100%;'>";
+                        tr += "<div class='row'>";
+                        tr += "<div class='col-md-4'>";
+                        tr += "<img class='card-img-top' src='" + foto + "' alt='" + foto + "'>";
+                        tr += "</div>";
+                        tr += "<div class='col-md-8'>";
+                        tr += "<div class='card-body'>";
+                        tr += "<h5 class='card-title'>" + judul + "</h5>";
+                        tr += "</div>";
+                        tr += "</div>";
+                        tr += "</div>";
+                        tr += "</div>";
+                        tr += "<br>";
+
+                        // var tr = "<div class=`col-lg-4 col-md-7 wow zoomIn` data-wow-delay=`0.1s`>";
+                        // tr += "<div class=`service-item d-flex flex-column justify-content-center text-center rounded`>";
+                        // tr += " <div class=`flex-shrink-0`>";
+                        // tr += "</div>";
+                        // tr += "<h6 class=`mt-auto`>" + sno + "</h6>";
+                        // tr += "<a class=`btn px-3 mt-auto mx-auto` href=``>Read More</a>";
+                        // tr += "</div>";
+                        // tr += "</div>";
+                        $('#postsList tbody').append(tr);
+
+                        // var tr = "<tr>";
+                        // tr += "<td>" + sno + "</td>";
+                        // tr += "<td><a href='" + 1 + "' target='_blank' >" + judul + "</a></td>";
+                        // tr += "</tr>";
+                        // $('#postsList tbody').append(tr);
+
+                    }
+                }
+
+            });
+        </script>
 
 
         <!-- Portfolio Start -->
