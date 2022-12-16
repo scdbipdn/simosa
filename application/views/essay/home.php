@@ -48,6 +48,7 @@ $bulan_tes = array(
 									<tr class=' bg-merah teks-putih'>
 										<th>No</th>
 										<th>Judul</th>
+										<th>Penulis</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
@@ -61,10 +62,11 @@ $bulan_tes = array(
 										<tr>
 											<td><?= $no; ?></td>
 											<td><?= $isi['judul']; ?></td>
+											<td><?= $isi['nama']; ?></td>
 											<td>
 												<?php if ($this->session->userdata('level') == 'Petugas') { ?>
-													<a href="<?= base_url('essay/show/' . $isi['id_essay']); ?>" class="btn btn-primary btn-sm" title="detail pinjam">
-														<i class="fa fa-eye"></i></button></a>
+													<a href="<?= base_url('essay/show_edit/' . $isi['id_essay'] . '/' . $isi['id_praja']); ?>" class="btn btn-primary bg-biru btn-sm" title="detail pinjam">
+														<i class="fa fa-eye"></i> Detail Essay</a>
 													<a href="<?= base_url('essay/prosespinjam?id_essay=' . $isi['id_essay']); ?>" onclick="return confirm('Anda yakin menghapus essay ini ?');" class="btn btn-danger btn-sm" title="hapus pinjam">
 														<i class="fa fa-trash"></i></a>
 												<?php } else { ?>

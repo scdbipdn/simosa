@@ -56,7 +56,7 @@
                                                     <?php } ?>
                                                 </center>
                                             </td>
-                                            <td><a href="<?= base_url("essay/show_edit/" . $isi['id_login']) ?>"><?= $isi['nama']; ?></a></td>
+                                            <td><a href="<?= base_url("essay/show/" . $isi['id_login']) ?>"><?= $isi['nama']; ?></a></td>
                                             <td><?= $isi['user']; ?></td>
                                             <td><?= $isi['jenkel']; ?></td>
                                             <td><?= $isi['telepon']; ?></td>
