@@ -30,6 +30,7 @@
 
     <!-- Template Stylesheet -->
     <link href="<?= base_url() ?>assets_style/assets_depan/css/style.css" rel="stylesheet">
+    <!--tes-->
 </head>
 
 <body>
