@@ -4,8 +4,8 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
-       
-                
+
+
 
         <div class="biodata-kiri">
 
@@ -15,7 +15,7 @@
             ?>
                 <br />
                 <center>
-                <img src="<?php echo base_url(); ?>assets_style/image/<?php echo $d->foto; ?>" alt="#" class="img-thumbnail" style="border:2px solid #fff;height:auto;width:70%;" />
+                    <img src="<?php echo base_url(); ?>assets_style/image/<?php echo $d->foto; ?>" alt="#" class="img-thumbnail" style="border:2px solid #fff;height:auto;width:70%;" />
                 </center>
             <?php } else { ?>
                 <!--<img src="" alt="#" class="user-image" style="border:2px solid #fff;"/>-->
@@ -142,6 +142,142 @@
                         </li>
                     </ul>
                 </li>
+
+
+
+                <li class="treeview <?php if ($this->uri->uri_string() == 'data/kategori') {
+                                        echo 'active';
+                                    } ?>
+				<?php if ($this->uri->uri_string() == 'data/rak') {
+                    echo 'active';
+                } ?>
+				<?php if ($this->uri->uri_string() == 'data') {
+                    echo 'active';
+                } ?>
+				<?php if ($this->uri->uri_string() == 'data/bukutambah') {
+                    echo 'active';
+                } ?>
+				<?php if ($this->uri->uri_string() == 'data/bukudetail/' . $this->uri->segment('3')) {
+                    echo 'active';
+                } ?>
+				<?php if ($this->uri->uri_string() == 'data/bukuedit/' . $this->uri->segment('3')) {
+                    echo 'active';
+                } ?>">
+                    <a href="#">
+                        <i class="fa fa-pencil-square"></i>
+                        <span>Pengaturan </span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($this->uri->uri_string() == 'data') {
+                                        echo 'active';
+                                    } ?>
+                        <?php if ($this->uri->uri_string() == 'data/bukutambah') {
+                            echo 'active';
+                        } ?>
+                        <?php if ($this->uri->uri_string() == 'data/bukudetail/' . $this->uri->segment('3')) {
+                            echo 'active';
+                        } ?>
+                        <?php if ($this->uri->uri_string() == 'data/bukuedit/' . $this->uri->segment('3')) {
+                            echo 'active';
+                        } ?>">
+                            <a href="<?php echo base_url("tentang"); ?>" class="cursor">
+                                <span class="fa fa-book"></span> Tentang
+
+                            </a>
+                        </li>
+                        <li class=" <?php if ($this->uri->uri_string() == 'data/kategori') {
+                                        echo 'active';
+                                    } ?>">
+                            <!-- <a href="<?php echo base_url("data/kategori"); ?>" class="cursor">
+                                <span class="fa fa-tags"></span> Kategori
+
+                            </a> -->
+                        </li>
+                        <li class=" <?php if ($this->uri->uri_string() == 'data/rak') {
+                                        echo 'active';
+                                    } ?>">
+                            <!-- <a href="<?php echo base_url("data/rak"); ?>" class="cursor">
+                                <span class="fa fa-list"></span> Rak
+
+                            </a> -->
+                        </li>
+                    </ul>
+                </li>
+
+
+
+
+
+
+                <li class="treeview <?php if ($this->uri->uri_string() == 'data/kategori') {
+                                        echo 'active';
+                                    } ?>
+				<?php if ($this->uri->uri_string() == 'data/rak') {
+                    echo 'active';
+                } ?>
+				<?php if ($this->uri->uri_string() == 'data') {
+                    echo 'active';
+                } ?>
+				<?php if ($this->uri->uri_string() == 'data/bukutambah') {
+                    echo 'active';
+                } ?>
+				<?php if ($this->uri->uri_string() == 'data/bukudetail/' . $this->uri->segment('3')) {
+                    echo 'active';
+                } ?>
+				<?php if ($this->uri->uri_string() == 'data/bukuedit/' . $this->uri->segment('3')) {
+                    echo 'active';
+                } ?>">
+                    <a href="#">
+                        <i class="fa fa-pencil-square"></i>
+                        <span>Artikel </span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($this->uri->uri_string() == 'data') {
+                                        echo 'active';
+                                    } ?>
+                        <?php if ($this->uri->uri_string() == 'data/bukutambah') {
+                            echo 'active';
+                        } ?>
+                        <?php if ($this->uri->uri_string() == 'data/bukudetail/' . $this->uri->segment('3')) {
+                            echo 'active';
+                        } ?>
+                        <?php if ($this->uri->uri_string() == 'data/bukuedit/' . $this->uri->segment('3')) {
+                            echo 'active';
+                        } ?>">
+                            <a href="<?php echo base_url("artikel"); ?>" class="cursor">
+                                <span class="fa fa-book"></span> Data Artikel
+
+                            </a>
+                        </li>
+                        <li class=" <?php if ($this->uri->uri_string() == 'data/kategori') {
+                                        echo 'active';
+                                    } ?>">
+                            <!-- <a href="<?php echo base_url("data/kategori"); ?>" class="cursor">
+                                <span class="fa fa-tags"></span> Kategori
+
+                            </a> -->
+                        </li>
+                        <li class=" <?php if ($this->uri->uri_string() == 'data/rak') {
+                                        echo 'active';
+                                    } ?>">
+                            <!-- <a href="<?php echo base_url("data/rak"); ?>" class="cursor">
+                                <span class="fa fa-list"></span> Rak
+
+                            </a> -->
+                        </li>
+                    </ul>
+                </li>
+
+
+
+
+
                 <li class="treeview 
                 <?php if ($this->uri->uri_string() == 'transaksi') {
                     echo 'active';
@@ -235,10 +371,10 @@
                         <i class="fa fa-print"></i> <span>Cetak kartu Anggota</span>
                     </a> -->
                 </li>
-                
+
             <?php } ?>
             <li class="">
-                <a href="<?php echo base_url();?>login/logout">
+                <a href="<?php echo base_url(); ?>login/logout">
                     <i class="fa fa-sign-out"></i> <span>Keluar</span>
                 </a>
             </li>

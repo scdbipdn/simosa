@@ -35,7 +35,7 @@ class Regis extends CI_Controller
     public function regis()
     {
         // format tabel / kode baru 3 hurup / id tabel / order by limit ngambil data terakhir
-        $id = $this->M_regis->buat_kode('tbl_login', 'AG', 'id_login', 'ORDER BY id_login DESC LIMIT 1');
+        $id = 0;
         $nama = htmlentities($this->input->post('nama', TRUE));
         $user = htmlentities($this->input->post('user', TRUE));
         $pass = md5(htmlentities($this->input->post('pass', TRUE)));
@@ -46,12 +46,17 @@ class Regis extends CI_Controller
         $alamat = htmlentities($this->input->post('alamat', TRUE));
         $email = $_POST['email'];
 
-        $dd = $this->db->query("SELECT * FROM tbl_login WHERE user = '$user' OR email = '$email'");
-        if ($dd->num_rows() > 0) {
-            $this->session->set_flashdata('pesan', '<div id="notifikasi"><div class="alert alert-warning">
-			<p> Gagal Update User : ' . $nama . ' !, Username / Email Anda Sudah Terpakai</p>
-			</div></div>');
-            redirect(base_url('user/tambah'));
+        $dd_email = $this->db->query("SELECT * FROM tbl_login WHERE email = '$email'");
+        $dd_username = $this->db->query("SELECT * FROM tbl_login WHERE user = '$user'");
+        if ($dd_email->num_rows() > 0 && $dd_username->num_rows() > 0) {
+            $this->session->set_flashdata('pesan', 'Gagal Update User : ' . $nama . ' !, Email & Username Anda Sudah Terpakai');
+            redirect(base_url('regis'));
+        } elseif ($dd_username->num_rows() > 0) {
+            $this->session->set_flashdata('pesan', 'Gagal Update User : ' . $nama . ' !, Username Anda Sudah Terpakai');
+            redirect(base_url('regis'));
+        } elseif ($dd_email->num_rows() > 0) {
+            $this->session->set_flashdata('pesan', 'Gagal Update User : ' . $nama . ' !, Email Anda Sudah Terpakai');
+            redirect(base_url('regis'));
         } else {
             // setting konfigurasi upload
             $nmfile = "user_" . time();
@@ -84,10 +89,10 @@ class Regis extends CI_Controller
             $save = $this->db->insert('tbl_login', $data);
             if ($save) {
                 echo '<script>alert("Registrasi berhasil silahkan login");
-                window.location="' . base_url() . '"</script>';
+                window.location="' . base_url('login') . '"</script>';
             } else {
-                echo '<script>alert("Registrasi Gagal, Periksa Kembali Data Anda");
-                window.location="' . base_url() . '"</script>';
+                echo '<script>alert("Registrasi Gagal silahkan coba lagi");
+                window.location="' . base_url('regis') . '"</script>';
             }
         }
     }

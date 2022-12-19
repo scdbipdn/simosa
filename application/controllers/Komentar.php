@@ -60,7 +60,7 @@ class Komentar extends CI_Controller
             if ($this->session->userdata('level') == 'Praja') {
                 redirect(base_url('essay/show_edit/' . $id));
             } else {
-                redirect(base_url('essay/show_edit/' . $id_praja));
+                redirect(base_url('essay/show_edit/' . $id . '/' . $id_praja));
             }
         } else {
             $this->db->query("INSERT INTO table_comment VALUES('','0','$nama','$email','$isi_komentar','$id')");
@@ -68,7 +68,7 @@ class Komentar extends CI_Controller
             if ($this->session->userdata('level') == 'Praja') {
                 redirect(base_url('essay/show_edit/' . $id));
             } else {
-                redirect(base_url('essay/show_edit/' . $id_praja));
+                redirect(base_url('essay/show_edit/' . $id . '/' . $id_praja));
             }
         }
     }
@@ -86,14 +86,14 @@ class Komentar extends CI_Controller
             if ($this->session->userdata('level') == 'Praja') {
                 redirect(base_url('essay/show_edit/' . $content_id));
             } else {
-                redirect(base_url('essay/show_edit/' . $id_praja));
+                edirect(base_url('essay/show_edit/' . $content_id . '/' . $id_praja));
             }
         } else {
             $this->db->query("INSERT INTO table_comment VALUES('','$comment_id','$nama','$email','$isi','$content_id')");
             if ($this->session->userdata('level') == 'Praja') {
                 redirect(base_url('essay/show_edit/' . $content_id));
             } else {
-                redirect(base_url('essay/show_edit/' . $id_praja));
+                redirect(base_url('essay/show_edit/' . $content_id . '/' . $id_praja));
             }
         }
     }

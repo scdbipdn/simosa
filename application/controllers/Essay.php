@@ -47,9 +47,22 @@ class Essay extends CI_Controller
                 array($this->session->userdata('anggota_id'))
             );
         } else {
-            $this->data['pinjam'] = $this->db->query("SELECT DISTINCT `pinjam_id`, `anggota_id`, 
-				`status`, `tgl_pinjam`, `lama_pinjam`, `tgl_balik`, `tgl_kembali` 
-				FROM tbl_pinjam WHERE status = 'Dipinjam' ORDER BY pinjam_id DESC");
+            if (!empty($this->uri->segment(3))) {
+                $id_essay = $this->uri->segment(3);
+                if ($this->session->userdata('level') == 'Petugas') {
+                    $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_essay")->row_array();
+                    $this->data['essay'] = $this->db->query("SELECT * FROM tbl_essay WHERE id_praja = $id_essay")->row_array();
+                } else {
+                    $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_essay")->row_array();
+                    $this->data['essay'] = "";
+                }
+            }
+            // sudah input essay 
+            else {
+                $id_essay = $this->uri->segment(3);
+                $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_essay")->row_array();
+                $this->data['essay'] = "";
+            }
         }
 
         $this->load->view('header_view', $this->data);
@@ -65,12 +78,12 @@ class Essay extends CI_Controller
         $id_praja = $this->data['idbo'] = $this->session->userdata('ses_id');
 
         if ($this->session->userdata('level') == 'Praja') {
-            $this->data['essay'] = $this->db->query("SELECT  `id_essay`,`judul`, `id_praja`
-				FROM tbl_essay WHERE id_praja = $id_praja");
+            $this->data['essay'] = $this->db->query("SELECT  tbl_login.nama, tbl_essay.id_essay, tbl_essay.judul, tbl_essay.id_praja
+				FROM tbl_essay INNER JOIN tbl_login ON tbl_login.id_login = tbl_essay.id_praja WHERE tbl_essay.id_praja = $id_praja");
         } else {
-            $this->data['essay'] = $this->db->query("SELECT DISTINCT `id_essay`,`pinjam_id`, `anggota_id`, 
-				`status`, `tgl_pinjam`, `lama_pinjam`, `tgl_balik`, `tgl_kembali` 
-				FROM tbl_pinjam WHERE status = 'Di Kembalikan' ORDER BY id_pinjam DESC");
+            $id_praja = $this->uri->segment(3);
+            $this->data['essay'] = $this->db->query("SELECT  tbl_login.nama, tbl_essay.id_essay, tbl_essay.judul, tbl_essay.id_praja
+            FROM tbl_essay INNER JOIN tbl_login ON tbl_login.id_login = tbl_essay.id_praja WHERE tbl_essay.id_praja = $id_praja");
         }
 
         $this->load->view('header_view', $this->data);
@@ -88,14 +101,16 @@ class Essay extends CI_Controller
         //jika belum input essay
         if (!empty($this->uri->segment(3))) {
             $id_essay = $this->uri->segment(3);
+            $id_praja_admin = $this->uri->segment(4);
+
             if ($this->session->userdata('level') == 'Praja') {
                 $this->data['essay'] = $this->db->query("SELECT * FROM tbl_essay WHERE id_essay = $id_essay AND id_praja = $id_praja")->row_array();
                 $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_praja")->row_array();
             } elseif ($this->session->userdata('level') == 'Petugas') {
-                $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_essay")->row_array();
-                $this->data['essay'] = $this->db->query("SELECT * FROM tbl_essay WHERE id_praja = $id_essay")->row_array();
+                $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_praja_admin")->row_array();
+                $this->data['essay'] = $this->db->query("SELECT * FROM tbl_essay WHERE id_essay = $id_essay")->row_array();
             } else {
-                $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_praja")->row_array();
+                $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_praja_admin")->row_array();
                 $this->data['essay'] = "";
             }
         }
@@ -166,7 +181,7 @@ class Essay extends CI_Controller
                 $this->db->insert('tbl_essay', $data);
 
                 $telegram_id = '-832985315';
-                $message_text = 'Telah di perbaharui oleh **' . $d['nama'] . '** untuk essay dengan judul __' . $data['judul'] . '__ atas nama **' . $d['nama'] . '**';
+                $message_text = 'Telah di tambahkan oleh **' . $d['nama'] . '** untuk essay dengan judul __' . $data['judul'] . '__ atas nama **' . $d['nama'] . '**';
                 $secret_token = '5804522084:AAH4QIIQhtxLtaCSpmwc0vlPUBJ0FYz-uLk';
                 $url = "https://api.telegram.org/bot" . $secret_token . "/sendMessage?parse_mode=markdown&chat_id=" . $telegram_id;
                 $url = $url . "&text=" . urlencode($message_text);

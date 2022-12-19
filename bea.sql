@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 05, 2022 at 08:51 AM
+-- Generation Time: Dec 16, 2022 at 01:44 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.29
 
@@ -36,18 +36,6 @@ CREATE TABLE `table_comment` (
   `comment_content_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `table_comment`
---
-
-INSERT INTO `table_comment` (`comment_id`, `comment_status`, `comment_nama`, `comment_email`, `comment_isi`, `comment_content_id`) VALUES
-(52, 0, 'Harliman', 'rianto@gmail.com', 'yang saya kasih waran tolong di koreksi', 5),
-(53, 52, 'Hendri Aji Pangestu', 'ajipangestu@gmial.com', 'siap bapak', 5),
-(54, 0, 'Harliman', 'rianto@gmail.com', 'itu perbaiki yang saya kasih tanda', 7),
-(55, 54, 'Danny', 'scdbipdn@gmail.com', 'ok siap bapak', 7),
-(56, 0, 'Harliman', 'rianto@gmail.com', 'Perbaiki yang saya kasih warna merah', 8),
-(57, 56, 'Harliman Krida Laksana', 'harliman@gmail.com', 'Siap bapak', 8);
-
 -- --------------------------------------------------------
 
 --
@@ -59,6 +47,76 @@ CREATE TABLE `table_content` (
   `content_title` varchar(100) NOT NULL,
   `content_body` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_artikel`
+--
+
+CREATE TABLE `tbl_artikel` (
+  `id_artikel` int(10) NOT NULL,
+  `judul` varchar(150) NOT NULL,
+  `isi` text NOT NULL,
+  `kategori` varchar(50) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `img` varchar(50) NOT NULL,
+  `tgl_pembuatan` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_artikel`
+--
+
+INSERT INTO `tbl_artikel` (`id_artikel`, `judul`, `isi`, `kategori`, `status`, `img`, `tgl_pembuatan`) VALUES
+(11, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
+(12, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(13, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(14, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(15, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(16, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(17, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
+(18, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(19, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(20, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(21, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(22, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(23, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
+(24, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(25, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(26, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(27, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(28, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(29, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
+(30, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(31, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(32, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(33, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(34, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(35, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
+(36, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(37, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(38, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(39, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(40, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(41, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
+(42, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(43, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(44, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(45, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(46, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(47, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
+(48, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(49, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(50, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(51, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(52, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(53, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
+(54, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(55, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(56, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(57, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
+(58, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', '');
 
 -- --------------------------------------------------------
 
@@ -145,20 +203,6 @@ CREATE TABLE `tbl_essay` (
   `isi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `tbl_essay`
---
-
-INSERT INTO `tbl_essay` (`id_essay`, `id_praja`, `judul`, `isi`) VALUES
-(1, 1, 'Test 123', '<h1>Ini essay pertama saya</h1>\r\n'),
-(3, 4, 'test 1', '<p>hendri aji pangestu</p>\r\n'),
-(4, 2, 'test', '<p style=\"text-align:center\"><strong>Hendri</strong></p>\r\n\r\n<p><span style=\"color:#e74c3c\"><strong>Hendri Aji Pangestu</strong></span><sup data-footnote-id=\"7paq6\"><a href=\"#footnote-1\" id=\"footnote-marker-1-1\" rel=\"footnote\">[1]</a></sup></p>\r\n\r\n<section class=\"footnotes\">\r\n<header>\r\n<h2>Catatan kaki</h2>\r\n</header>\r\n\r\n<ol>\r\n	<li data-footnote-id=\"7paq6\" id=\"footnote-1\"><sup><a href=\"#footnote-marker-1-1\">^</a> </sup><cite><em><strong>footnote pertama</strong></em></cite></li>\r\n</ol>\r\n</section>\r\n'),
-(5, 8, 'Judul Essay', '<p style=\"text-align:center\"><em><strong><span style=\"color:#000000\">ini esssay saya</span></strong></em></p>\r\n\r\n<p style=\"text-align:center\">&nbsp;</p>\r\n\r\n<p style=\"text-align:center\"><em><strong><span style=\"color:#000000\"><span style=\"background-color:#2ecc71\">ini salah disni</span></span></strong></em></p>\r\n'),
-(6, 9, 'Esay Pertama Saya', '<p style=\"text-align:center\"><s><em><span style=\"color:#e67e22\"><u><strong>Ini adalah essay pertama saya</strong></u></span></em></s></p>\r\n\r\n<p style=\"text-align:center\"><span style=\"color:#e74c3c\"><strong><em><u>Ini ada koreksi tolong di benarkan</u></em></strong></span></p>\r\n'),
-(7, 10, 'Essay 1', '<p style=\"text-align:center\"><strong>Pesona Bali</strong></p>\r\n\r\n<p style=\"text-align:justify\"><br />\r\n&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Siapa tak kenal Bali, pulau kecil di seberang ujung Timur Jawa ini? Pulau indah nan menawan yang dijuluki pulau dewata ini bagai magnet yang menarik wisatawan, baik domestik maupun mancanegara. Bahkan sebelum mengenal nama Indonesia, banyak wisatawan asing lebih dulu mengenal nama Bali.</p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"text-align:justify\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Ada banyak hal yang dapat dinikmati ketika mengunjungi Bali, mulai dari wisata pantai, gunung, budaya, dan lain sebagainya. Jutaan wisatawan mengunjungi Bali setiap tahunnya karena keramahan masyarakatnya, keindahan panoramanya, dan keunikan budayanya.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"text-align:justify\">&nbsp; &nbsp; &nbsp; &nbsp; </span>Pertama, Bali menjadi tujuan wisata dunia karena keramahan masyarakatnya. Sesaat setelah wisatawan menginjakkan kaki di bumi seribu pura ini, senyum ramah penduduk Bali akan menyambut mereka.<br />\r\n<br />\r\nMasyarakat Bali yang taat menjalankan agama Hindu dan adat-istiadat mereka ini sangat terbuka dan menghargai para pendatang. Sistem pemerintahan desa yang kuat dengan ribuan banjar di seluruh Bali juga memberi suasana damai dan tentram bagi para wisatawan. Dengan masyarakat yang taat adat, Bali memberikan segala keramahan bagi wisatawan.<br />\r\n<br />\r\nDisamping keramahan masyarakatnya, wisatawan jatuh cinta dengan Bali karena keindahan panoramanya. Wisatawan dapat memanjakan diri dengan berjemur di pantai dengan sinar matahari yang hangat di sepanjang garis pantainya.<br />\r\n<br />\r\nBagi mereka yang menyukai olah raga pantai seperti surfing, snorkeling, dan diving, Bali adalah surganya. Ombak Pantai Kuta yang bisa mencapai 2-3 meter memberikan tantangan tersendiri bagi para peselancar.<br />\r\n<br />\r\nYang paling mengesankan adalah keunikan budaya Bali yang sudah terkenal ke seluruh dunia. Adat istiadat yang kuat dan tidak pudar dengan derasnya industri pariwisata merupakan daya tarik tersendiri.<br />\r\n<br />\r\nPerayaan dan festival, baik yang bersifat keagamaan maupun adat selalu mewarnai kehidupan masyarakat Bali. Beberapa acara keagamaan seperti Galungan, Kuningan, Nyepi, Purnama, Ngaben, dan banyak lagi lainnya mampu menghipnotis para wisatawan.<br />\r\n<br />\r\nDengan pesona yang dimiliki Bali, tidaklah mengherankan bila Bali dikunjungi jutaan wisatawan setiap tahunnya. Banyak diantara mereka, sepulang liburan di Bali, mendapatkan pengalaman unik yang sering menjadi inspirasi dan semangat hidup. Jadi, kalau Anda bingung menentukan kemana akan liburan tahun ini, mengapa tidak ke Bali?</p>\r\n'),
-(8, 11, 'Judul Essay', '<p><span style=\"font-size:14px\"><span style=\"color:#1abc9c\"><em><strong>Ini adalah essay pertama </strong></em></span><span style=\"color:#e74c3c\"><em><strong>saya</strong></em></span></span></p>\r\n'),
-(9, 12, 'Judul Essay', '<p><strong>Ini</strong> essay pertama saya<sup data-footnote-id=\"sqfmt\"><a href=\"#footnote-1\" id=\"footnote-marker-1-1\" rel=\"footnote\">[1]</a></sup></p>\r\n\r\n<section class=\"footnotes\">\r\n<header>\r\n<h2>Footnotes</h2>\r\n</header>\r\n\r\n<ol>\r\n	<li data-footnote-id=\"sqfmt\" id=\"footnote-1\"><sup><a href=\"#footnote-marker-1-1\">^</a> </sup><cite>Catatn kaki</cite></li>\r\n</ol>\r\n</section>\r\n\r\n<p>&nbsp;</p>\r\n');
-
 -- --------------------------------------------------------
 
 --
@@ -205,12 +249,7 @@ CREATE TABLE `tbl_login` (
 --
 
 INSERT INTO `tbl_login` (`id_login`, `anggota_id`, `user`, `pass`, `level`, `nama`, `tempat_lahir`, `tgl_lahir`, `jenkel`, `alamat`, `telepon`, `email`, `tgl_bergabung`, `foto`) VALUES
-(1, 'AG001', 'hendri', '202cb962ac59075b964b07152d234b70', 'Petugas', 'Hendri Admin', 'Solo', '2000-05-10', 'Laki-Laki', 'Yogyakarta', '081234567890', 'rianto@gmail.com', '2019-11-20', 'user_1630303496.png'),
-(8, 'AG002', 'aji', '202cb962ac59075b964b07152d234b70', 'Praja', 'Hendri Aji Pangestu', 'Garut', '1997-07-21', 'Laki-Laki', 'test', '085223661144', 'ajipangestu@gmial.com', '2022-12-02', 'user_1669920753.jpeg'),
-(9, 'AG009', 'firman', '7eda9a0d45d4dbfa99e06d4f402c2e67', 'Praja', 'Firman', 'BaoBao', '1997-07-21', 'Laki-Laki', 'Bao bao sumatra tenggara', '085223661144', 'anwarsptr@gmail.com', '2022-12-02', 'user_1669942156.jpeg'),
-(10, 'AG0010', 'danny', 'd4e17a9b560c652ba56e912bfb37cf87', 'Praja', 'Danny', 'Garut', '1997-07-21', 'Laki-Laki', 'Kalimantan', '085223661144', 'scdbipdn@gmail.com', '2022-12-02', 'user_1669949818.jpeg'),
-(11, 'AG0011', 'harliman', 'c838cf04331d3b4e9b0df1682e9f5d2c', 'Praja', 'Harliman Krida Laksana', 'Garut', '1997-07-21', 'Laki-Laki', 'Griya Pamoyanan 3 Garut', '085223661144', 'harliman@gmail.com', '2022-12-03', 'user_1670032141.jpeg'),
-(12, 'AG0012', 'shanum', 'ea937caa4cde05de01a85f8042d914d5', 'Praja', 'Shanum Aqila', 'Garut', '1997-07-21', 'Perempuan', 'Garut', '085223661144', 'shanum@gmial.com', '2022-12-03', 'user_1670036766.jpeg');
+(15, 'AG001', 'admin', '0192023a7bbd73250516f069df18b500', 'Petugas', 'Admin', 'garut', '1997-07-21', 'Laki-Laki', 'test', '085223661144', 'super.admin@gmail.com', '2022-12-06', 'user_1670391778.jpeg');
 
 -- --------------------------------------------------------
 
@@ -256,6 +295,26 @@ CREATE TABLE `tbl_rak` (
 INSERT INTO `tbl_rak` (`id_rak`, `nama_rak`) VALUES
 (1, 'Rak Buku 1');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_tentang_kami`
+--
+
+CREATE TABLE `tbl_tentang_kami` (
+  `id_tentang_kami` int(20) NOT NULL,
+  `keterangan` text NOT NULL,
+  `status` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_tentang_kami`
+--
+
+INSERT INTO `tbl_tentang_kami` (`id_tentang_kami`, `keterangan`, `status`) VALUES
+(1, '<p>Simosa adalah aplikasi untuk memantau dan memanajemen terkait Beasiswa LPDP</p>\r\n', '0'),
+(2, '<p>LPDP is committed to preparing Indonesian future leaders and professionals through scholarships and encouraging research innovation through research funding.&nbsp; LPDP continues to move towards an organization with high competitiveness, not only on a local scale, but also on a regional and even international scale.</p>\r\n\r\n<p>The services provided by LPDP are free of charge. Thank you for not giving gratuities/rewards in any form to our employees.</p>\r\n', '1');
+
 --
 -- Indexes for dumped tables
 --
@@ -271,6 +330,12 @@ ALTER TABLE `table_comment`
 --
 ALTER TABLE `table_content`
   ADD PRIMARY KEY (`content_id`);
+
+--
+-- Indexes for table `tbl_artikel`
+--
+ALTER TABLE `tbl_artikel`
+  ADD PRIMARY KEY (`id_artikel`);
 
 --
 -- Indexes for table `tbl_biaya_denda`
@@ -321,6 +386,12 @@ ALTER TABLE `tbl_rak`
   ADD PRIMARY KEY (`id_rak`);
 
 --
+-- Indexes for table `tbl_tentang_kami`
+--
+ALTER TABLE `tbl_tentang_kami`
+  ADD PRIMARY KEY (`id_tentang_kami`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -328,13 +399,19 @@ ALTER TABLE `tbl_rak`
 -- AUTO_INCREMENT for table `table_comment`
 --
 ALTER TABLE `table_comment`
-  MODIFY `comment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `comment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `table_content`
 --
 ALTER TABLE `table_content`
   MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_artikel`
+--
+ALTER TABLE `tbl_artikel`
+  MODIFY `id_artikel` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `tbl_biaya_denda`
@@ -358,7 +435,7 @@ ALTER TABLE `tbl_denda`
 -- AUTO_INCREMENT for table `tbl_essay`
 --
 ALTER TABLE `tbl_essay`
-  MODIFY `id_essay` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_essay` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_kategori`
@@ -370,7 +447,7 @@ ALTER TABLE `tbl_kategori`
 -- AUTO_INCREMENT for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tbl_pinjam`
@@ -383,6 +460,12 @@ ALTER TABLE `tbl_pinjam`
 --
 ALTER TABLE `tbl_rak`
   MODIFY `id_rak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_tentang_kami`
+--
+ALTER TABLE `tbl_tentang_kami`
+  MODIFY `id_tentang_kami` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
