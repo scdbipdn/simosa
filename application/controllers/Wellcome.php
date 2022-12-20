@@ -33,7 +33,11 @@ class Wellcome extends CI_Controller
         $this->data['tentang_kami'] = $this->db->query("SELECT * FROM tbl_tentang_kami WHERE `status` = 1")->row();
         $this->data['artikel'] = $this->db->query("SELECT * FROM tbl_artikel WHERE `status` = 'Publish'")->result_array();
         $this->data['title_web'] = 'Sistem Informasi Beasiswa';
+        $this->load->view('badan-depan/head');
+        $this->load->view('badan-depan/navigasi');
         $this->load->view('index', $this->data);
+        $this->load->view('badan-depan/footer');
+        $this->load->view('badan-depan/foot');
     }
 
     public function auth()
