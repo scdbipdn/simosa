@@ -1,6 +1,6 @@
  <!-- Navbar & Hero Start -->
  <div class="container-xxl position-relative p-0">
-    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0 navigasi">
         <a href="" class="navbar-brand p-0">
             <img src="<?= base_url() ?>assets_style/assets_depan/img/logo.png" alt="Logo">
         </a>

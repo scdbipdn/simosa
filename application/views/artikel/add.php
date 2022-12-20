@@ -87,8 +87,9 @@ $bulan_tes = array(
 											</h4>
 										</label>
 										<select class="form-control" name="kategori" id="kategori">
-											<option value="Test1">Test 1</option>
-											<option value="Test2">Test 2</option>
+											<?php foreach($kategori as $k): ?>
+											<option value="<?= $k['id_kategori'] ?>"><?= $k['nama_kategori'] ?></option>
+											<?php endforeach; ?>
 										</select>
 										<div class="invalid-feedback"><?php echo form_error('kategori'); ?></div>
 									</div>

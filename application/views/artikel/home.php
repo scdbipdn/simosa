@@ -47,6 +47,7 @@ $bulan_tes = array(
 								<thead>
 									<tr class=' bg-merah teks-putih'>
 										<th>No</th>
+										<th>Thumbnail</th>
 										<th>Judul</th>
 										<th>Kategori</th>
 										<th>Status</th>
@@ -57,11 +58,24 @@ $bulan_tes = array(
 									<?php
 									$no = 1;
 									foreach ($data_artikel as $data) {
+										if ($data['status']=='Draft') 
+										{
+											$bg = "pink";
+										}
+										else
+										{
+											$bg = "";
+										}
 									?>
-										<tr>
+										<tr style='background-color:<?= $bg ?>;'>
 											<td><?= $no; ?></td>
+											<td>
+												<center>
+													<img width='50' height='50' src="<?= base_url('assets_style/image/artikel/' .$data['img']); ?>" alt="">
+												</center>
+											</td>
 											<td><?= $data['judul']; ?></td>
-											<td><?= $data['kategori']; ?></td>
+											<td><?= $data['nama_kategori']; ?></td>
 											<td><?= $data['status']; ?></td>
 											<td>
 												<?php if ($this->session->userdata('level') == 'Petugas') { ?>

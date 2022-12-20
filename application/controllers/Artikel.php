@@ -41,7 +41,7 @@ class Artikel extends CI_Controller
         if ($this->session->userdata('level') == 'Anggota') {
             echo "dilarang aksesk wey";
         } else {
-            $this->data['data_artikel'] = $this->M_Artikel->get_table('tbl_artikel');
+            $this->data['data_artikel'] = $this->M_Artikel->artikel_data();
         }
 
         $this->load->view('header_view', $this->data);
@@ -72,6 +72,7 @@ class Artikel extends CI_Controller
     {
         $this->data['title_web'] = 'Tambah Artikel || SIMOSA ';
         $id_praja = $this->data['idbo'] = $this->session->userdata('ses_id');
+        $this->data['kategori'] = $this->M_Artikel->get_table('tbl_kategori');
         //jika belum input essay
         $this->load->view('header_view', $this->data);
         $this->load->view('sidebar_view', $this->data);
@@ -100,7 +101,7 @@ class Artikel extends CI_Controller
             $this->load->view('footer_view', $this->data);
         } else {
             $nmfile = "artikel_" . time();
-            $config['upload_path'] = './assets_style/image/';
+            $config['upload_path'] = './assets_style/image/artikel/';
             $config['allowed_types'] = 'gif|jpg|jpeg|png';
             $config['file_name'] = $nmfile;
             // load library upload
@@ -115,7 +116,7 @@ class Artikel extends CI_Controller
                 'isi' => $this->input->post('isi'),
                 'img' => $data1['upload_data']['file_name'],
                 'status' => $this->input->post('status'),
-                'kategori' => $this->input->post('kategori')
+                'id_kategori' => $this->input->post('kategori')
             );
             $simpan = $this->db->insert('tbl_artikel', $data);
             if ($simpan) {

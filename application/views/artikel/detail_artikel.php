@@ -41,7 +41,7 @@ $bulan_tes = array(
 								<h4><label>GAMBAR</label>
 								</h4>
 								<center>
-									<img src="<?= base_url('assets_style/image/' . $data_artikel->img); ?>" class="img-responsive" alt="#">
+									<img src="<?= base_url('assets_style/image/artikel/' . $data_artikel->img); ?>" class="img-responsive" alt="#">
 								</center>
 							</div>
 							<div class="form-group">

@@ -10,3 +10,17 @@
 
 <!-- Template Javascript -->
 <script src="<?= base_url() ?>assets_style/assets_depan/js/main.js"></script>
+
+<script>
+$(document).ready(function () {
+    var num = 30; //number of pixels before modifying styles
+
+    $(window).bind('scroll', function () {
+        if ($(window).scrollTop() > num) {
+            $('.navigasi').addClass('sticky-top');
+        } else {
+            $('.navigasi').removeClass('sticky-top');
+        }
+    });
+});
+</script>

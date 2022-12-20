@@ -100,7 +100,7 @@
                     echo 'active';
                 } ?>">
                     <a href="#">
-                        <i class="fa fa-pencil-square"></i>
+                       <i class="fa fa-table" aria-hidden="true"></i>
                         <span>Data </span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
@@ -120,8 +120,7 @@
                             echo 'active';
                         } ?>">
                             <a href="<?php echo base_url("user"); ?>" class="cursor">
-                                <span class="fa fa-book"></span> Data Praja
-
+                                <i class="fa fa-circle-o" aria-hidden="true"></i> Data Praja
                             </a>
                         </li>
                         <li class=" <?php if ($this->uri->uri_string() == 'data/kategori') {
@@ -164,7 +163,7 @@
                     echo 'active';
                 } ?>">
                     <a href="#">
-                        <i class="fa fa-pencil-square"></i>
+                        <i class="fa fa-cog" aria-hidden="true"></i>
                         <span>Pengaturan </span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
