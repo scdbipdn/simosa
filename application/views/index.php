@@ -118,7 +118,7 @@
 
                     <br>
                     <center>
-                        <a class="btn btn-danger btn-lg mt-2" href="#">Telusuri Artikel Lebih Banyak Lagi</a>
+                        <a class="btn btn-danger btn-lg mt-2" href="<?= base_url('Wellcome/artikel') ?>">Telusuri Artikel Lebih Banyak Lagi</a>
                     </center>
                 </div>
 

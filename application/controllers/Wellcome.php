@@ -10,6 +10,7 @@ class Wellcome extends CI_Controller
         $this->data['CI'] = &get_instance();
         $this->load->helper(array('form', 'url'));
         $this->load->model('M_login');
+        $this->load->model('M_Artikel');
         $this->load->library('pagination');
     }
     /**
@@ -41,6 +42,23 @@ class Wellcome extends CI_Controller
         $this->load->view('badan-depan/head');
         $this->load->view('badan-depan/navigasi');
         $this->load->view('index', $this->data);
+        $this->load->view('badan-depan/footer');
+        $this->load->view('badan-depan/script');
+        $this->load->view('badan-depan/foot');
+    }
+
+    public function artikel()
+    {
+
+        $this->data['tentang_kami'] = $this->db->query("SELECT * FROM tbl_tentang_kami WHERE `status` = 1")->row();
+        //$this->data['artikel'] = $this->db->query("SELECT * FROM tbl_artikel WHERE `status` = 'Publish'")->result_array();
+        $this->data['title_web'] = 'Sistem Informasi Beasiswa';
+
+        $this->data['artikel_publish'] = $this->M_Artikel->artikel_publish();
+
+        $this->load->view('badan-depan/head');
+        $this->load->view('badan-depan/navigasi');
+        $this->load->view('artikel/depan-artikel', $this->data);
         $this->load->view('badan-depan/footer');
         $this->load->view('badan-depan/script');
         $this->load->view('badan-depan/foot');

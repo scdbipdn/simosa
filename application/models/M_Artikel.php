@@ -18,6 +18,17 @@ class M_Artikel extends CI_Model
     return $get_user->result_array();
   }
 
+  function artikel_publish()
+  {
+    $kueri = "SELECT *FROM tbl_artikel
+              INNER JOIN tbl_kategori ON tbl_artikel.id_kategori = tbl_kategori.id_kategori
+              WHERE status = 'Publish'
+              ORDER BY id_artikel DESC
+             ";
+    $get_user = $this->db->query($kueri);
+    return $get_user->result_array();
+  }
+
   function get_table($table_name)
   {
     $get_user = $this->db->get($table_name);
