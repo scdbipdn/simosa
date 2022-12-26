@@ -10,7 +10,7 @@ class M_Admin extends CI_Model
 
   function get_table($table_name)
   {
-    $get_user = $this->db->get($table_name);
+    $get_user = $this->db->get_where($table_name, ['level' => 'Praja']);
     return $get_user->result_array();
   }
 

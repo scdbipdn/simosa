@@ -124,6 +124,26 @@
 
                             </a>
                         </li>
+
+
+                        <li class="<?php if ($this->uri->uri_string() == 'data') {
+                                        echo 'active';
+                                    } ?>
+                        <?php if ($this->uri->uri_string() == 'data/bukutambah') {
+                            echo 'active';
+                        } ?>
+                        <?php if ($this->uri->uri_string() == 'data/bukudetail/' . $this->uri->segment('3')) {
+                            echo 'active';
+                        } ?>
+                        <?php if ($this->uri->uri_string() == 'data/bukuedit/' . $this->uri->segment('3')) {
+                            echo 'active';
+                        } ?>">
+                            <a href="<?php echo base_url("referensi_essay"); ?>" class="cursor">
+                                <span class="fa fa-book"></span> Data Referensi Essay
+
+                            </a>
+                        </li>
+
                         <li class=" <?php if ($this->uri->uri_string() == 'data/kategori') {
                                         echo 'active';
                                     } ?>">
@@ -278,6 +298,7 @@
 
 
 
+
                 <li class="treeview 
                 <?php if ($this->uri->uri_string() == 'transaksi') {
                     echo 'active';
@@ -364,6 +385,14 @@
                             } ?>">
                     <a href="<?php echo base_url('user/edit/' . $this->session->userdata('ses_id')); ?>" class="cursor">
                         <i class="fa fa-user"></i> <span>Profil</span>
+                    </a>
+                </li>
+
+                <li class="<?php if ($this->uri->uri_string() == 'user/edit/' . $this->uri->segment('3')) {
+                                echo 'active';
+                            } ?>">
+                    <a href="<?php echo base_url('referensi_essay'); ?>" class="cursor">
+                        <i class="fa fa-user"></i> <span>Referensi Essay</span>
                     </a>
                 </li>
                 <li class="">

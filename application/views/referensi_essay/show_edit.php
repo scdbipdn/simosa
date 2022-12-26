@@ -1,5 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script acess allowed'); ?>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <style type="text/css">
 	.child {
 		margin-left: 50px;
@@ -49,57 +49,17 @@ $bulan_tes = array(
 			echo $this->session->flashdata('pesan');
 		} ?>
 		<div class="row">
-			<div class="col-md-4">
+
+			<div class="col-md-12">
 				<div class="box box-danger" style='padding:10px;'>
 					<div class="box-header with-border">
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
-						<div class="table-responsive">
-							<div class="form-group">
-								<center>
-									<img src="<?= base_url('assets_style/image/' . $data_praja['foto']); ?>" class="img-responsive" alt="#">
-								</center>
-							</div>
-							<div class="form-group">
-								<label>Nama Praja</label>
-								<input type="text" class="form-control" value="<?= $data_praja['nama'] ?>" readonly>
-							</div>
-							<div class="form-group">
-								<label>Jenis Kelamin</label>
-								<br />
-								<input type="text" class="form-control" value="<?= $data_praja['jenkel'] ?>" readonly>
-							</div>
-
-							<div class="form-group">
-								<label>Telpon</label>
-								<br />
-								<input type="text" class="form-control" value="<?= $data_praja['telepon'] ?>" readonly>
-							</div>
-							<div class="form-group">
-								<label>Email</label>
-								<br />
-								<input type="text" class="form-control" value="<?= $data_praja['email'] ?>" readonly>
-							</div>
-							<div class="form-group">
-								<label>Alamat</label>
-								<textarea class="form-control" name="alamat" required="required" readonly><?= $data_praja['alamat'] ?></textarea>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-8">
-				<div class="box box-danger" style='padding:10px;'>
-					<div class="box-header with-border">
-					</div>
-					<!-- /.box-header -->
-					<div class="box-body">
-
 						<form action="<?php echo base_url('essay/simpan'); ?>" method="POST" enctype="multipart/form-data">
 							<?php if ($essay) {
 								echo "<input type='hidden' name='method' id='method' value='update' class='form-control' readonly>";
-								echo "<input type='hidden' name='id_essay' id='id_essay' value='" . $essay['id_essay'] . "' class='form-control' readonly>";
+								echo "<input type='hidden' name='id_referensi' id='id_referensi' value='" . $essay['id_referensi'] . "' class='form-control' readonly>";
 							} else {
 								echo "<input type='hidden' name='method' id='method' value='new' class='form-control' readonly>";
 							} ?>
@@ -109,7 +69,7 @@ $bulan_tes = array(
 										<b>JUDUL</b>
 									</h4>
 								</label>
-								<input type="text" name="judul" id="judul" value="<?= !empty($essay['judul']) ? $essay['judul'] : ""; ?>" class="form-control">
+								<input onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" type="text" name="judul" id="judul" value="<?= !empty($essay['judul']) ? $essay['judul'] : ""; ?>" class="form-control" disabled>
 							</div>
 							<div class="form-group">
 								<label>
@@ -117,11 +77,10 @@ $bulan_tes = array(
 										<b>ISI</b>
 									</h4>
 								</label>
-								<textarea name="essay" id="essay"><?= !empty($essay["isi"]) ? $essay["isi"] : ""; ?></textarea>
+								<textarea name="essay" id="essay" disabled><?= !empty($essay["isi"]) ? $essay["isi"] : ""; ?></textarea>
 							</div>
-
 							<div align="right">
-								<button type="submit" class="btn btn-primary bg-merah">Simpan Draft</button>
+								<a href="<?= base_url() ?>/referensi_essay" class="btn btn-danger">Kembali</a>
 							</div>
 
 						</form>
@@ -130,15 +89,15 @@ $bulan_tes = array(
 
 
 						<!--komentar-->
-						<?php if (!empty($essay)) {
-						?>
+						<!-- <?php if (!empty($essay)) {
+								?>
 
 							<h4 class='text-danger'>Kolom Komentar:</h4>
 							<form method="POST" action="<?php echo site_url('komentar/kirim') ?>">
 								<div class="w3-row-padding">
 									<div class="w3-half">
 										<input type="hidden" value="<?php echo $data_praja["id_login"]; ?>" name="id_praja">
-										<input type="hidden" value="<?php echo $essay["id_essay"]; ?>" name="id">
+										<input type="hidden" value="<?php echo $essay["id_referensi"]; ?>" name="id">
 										<input class="w3-input w3-border" type="hidden" placeholder="Nama" name="nama" value="<?= $d->nama ?>">
 									</div>
 									<div class="w3-half">
@@ -154,9 +113,9 @@ $bulan_tes = array(
 							</form>
 
 							<?php
-							$content_id =  $essay["id_essay"];
-							$query = $this->db->query("SELECT * FROM table_comment WHERE comment_status='0' AND comment_content_id = '$content_id' ORDER BY comment_id DESC");
-							foreach ($query->result() as $utama) :
+									$content_id =  $essay["id_referensi"];
+									$query = $this->db->query("SELECT * FROM table_comment WHERE comment_status='0' AND comment_content_id = '$content_id' ORDER BY comment_id DESC");
+									foreach ($query->result() as $utama) :
 							?>
 
 								<div class="w3-padding w3-container w3-panel w3-leftbar w3-border-red w3-pale-red">
@@ -167,10 +126,10 @@ $bulan_tes = array(
 								</div>
 
 								<?php
-								$content_id = $content_id;
-								$comment_id = $utama->comment_id;
-								$query = $this->db->query("SELECT * FROM table_comment WHERE comment_status='$comment_id' AND comment_content_id = '$content_id'");
-								foreach ($query->result() as $balasan) :
+										$content_id = $content_id;
+										$comment_id = $utama->comment_id;
+										$query = $this->db->query("SELECT * FROM table_comment WHERE comment_status='$comment_id' AND comment_content_id = '$content_id'");
+										foreach ($query->result() as $balasan) :
 								?>
 
 									<div class="w3-padding w3-panel w3-pale-blue w3-leftbar w3-border-blue child">
@@ -200,19 +159,13 @@ $bulan_tes = array(
 							<?php endforeach; ?>
 
 
-						<?php } ?>
+						<?php } ?> -->
 						<!--komentar-->
 					</div>
 					<br>
-
-
 				</div>
 			</div>
 		</div>
-
-
-
-
 </div>
 </section>
 </div>

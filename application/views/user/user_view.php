@@ -30,13 +30,12 @@
                                     <tr class="bg-merah teks-putih">
                                         <th>No</th>
                                         <th>ID</th>
-                                        <th>Foto</th>
+                                        <!-- <th>Foto</th> -->
                                         <th>Nama</th>
-                                        <th>User</th>
-                                        <th>Jenkel</th>
-                                        <th>Telepon</th>
-                                        <th>Level</th>
-                                        <th>Alamat</th>
+                                        <th>Keyword Essay</th>
+                                        <th>Rivewer</th>
+                                        <th>Dosbing Skripsi</th>
+                                        <th>Kabupaten/Provinsi</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -46,21 +45,20 @@
                                         <tr>
                                             <td><?= $no; ?></td>
                                             <td><?= $isi['anggota_id']; ?></td>
-                                            <td>
+                                            <!-- <td>
                                                 <center>
                                                     <?php if (!empty($isi['foto'] !== "-")) { ?>
                                                         <img src="<?php echo base_url(); ?>assets_style/image/<?php echo $isi['foto']; ?>" alt="#" class="img-responsive" style="height:auto;width:100px;" />
-                                                    <?php } else { ?>
-                                                        <!--<img src="" alt="#" class="user-image" style="border:2px solid #fff;"/>-->
-                                                        <i class="fa fa-user fa-3x" style="color:#333;"></i>
+                                                    <?php } else { ?> -->
+                                            <!--<img src="" alt="#" class="user-image" style="border:2px solid #fff;"/>-->
+                                            <!-- <i class="fa fa-user fa-3x" style="color:#333;"></i>
                                                     <?php } ?>
-                                                </center>
+                                                </center> -->
                                             </td>
                                             <td><a href="<?= base_url("essay/show/" . $isi['id_login']) ?>"><?= $isi['nama']; ?></a></td>
-                                            <td><?= $isi['user']; ?></td>
-                                            <td><?= $isi['jenkel']; ?></td>
-                                            <td><?= $isi['telepon']; ?></td>
-                                            <td><?= $isi['level']; ?></td>
+                                            <td><?= $isi['keyword_essay']; ?></td>
+                                            <td><?= $isi['reviewer']; ?></td>
+                                            <td><?= $isi['dosbing_skripsi']; ?></td>
                                             <td><?= $isi['alamat']; ?></td>
                                             <td style="width:20%;">
                                                 <a href="<?= base_url('user/edit/' . $isi['id_login']); ?>"><button class="btn btn-success"><i class="fa fa-edit"></i> Edit</button></a>

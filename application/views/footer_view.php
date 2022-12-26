@@ -73,7 +73,7 @@
 
 <script>
   CKEDITOR.replace('keterangan', {
-    extraPlugins: 'wordcount, footnotes, lineheight',
+    extraPlugins: 'wordcount, footnotes, lineheight, lite',
 
   })
 </script>
@@ -81,14 +81,14 @@
 
 <script>
   CKEDITOR.replace('essay', {
-    extraPlugins: 'wordcount, footnotes, lineheight',
+    extraPlugins: 'wordcount, footnotes, lineheight, lite',
 
   })
 </script>
 
 <script>
   CKEDITOR.replace('isi', {
-    extraPlugins: 'wordcount, footnotes, lineheight',
+    extraPlugins: 'wordcount, footnotes, lineheight, lite',
 
   })
 </script>
