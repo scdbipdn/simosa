@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 15, 2022 at 07:23 AM
+-- Generation Time: Dec 20, 2022 at 09:30 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.29
 
@@ -36,13 +36,6 @@ CREATE TABLE `table_comment` (
   `comment_content_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `table_comment`
---
-
-INSERT INTO `table_comment` (`comment_id`, `comment_status`, `comment_nama`, `comment_email`, `comment_isi`, `comment_content_id`) VALUES
-(59, 0, 'Admin', 'super.admin@gmail.com', 'test', 10);
-
 -- --------------------------------------------------------
 
 --
@@ -65,7 +58,7 @@ CREATE TABLE `tbl_artikel` (
   `id_artikel` int(10) NOT NULL,
   `judul` varchar(150) NOT NULL,
   `isi` text NOT NULL,
-  `kategori` varchar(50) NOT NULL,
+  `id_kategori` int(11) NOT NULL,
   `status` varchar(10) NOT NULL,
   `img` varchar(50) NOT NULL,
   `tgl_pembuatan` varchar(50) NOT NULL
@@ -75,55 +68,9 @@ CREATE TABLE `tbl_artikel` (
 -- Dumping data for table `tbl_artikel`
 --
 
-INSERT INTO `tbl_artikel` (`id_artikel`, `judul`, `isi`, `kategori`, `status`, `img`, `tgl_pembuatan`) VALUES
-(11, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
-(12, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(13, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(14, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(15, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(16, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(17, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
-(18, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(19, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(20, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(21, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(22, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(23, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
-(24, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(25, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(26, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(27, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(28, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(29, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
-(30, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(31, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(32, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(33, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(34, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(35, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
-(36, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(37, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(38, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(39, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(40, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(41, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
-(42, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(43, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(44, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(45, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(46, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(47, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
-(48, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(49, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(50, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(51, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(52, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(53, 'Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya Kiat kita sukses untuk dapat beasiswa LPDP 2024 dan cara menyiapkannya ', '<p>Ini adalah artikel pertama saya ya guys ya</p>\r\n', 'Test2', 'Publish', 'artikel_1670897580.jpeg', ''),
-(54, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(55, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(56, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(57, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', ''),
-(58, 'Artikel ke 2', '<p>Ini adalah artikel kedua saya</p>\r\n', 'Test2', 'Publish', 'artikel_1670898034.jpeg', '');
+INSERT INTO `tbl_artikel` (`id_artikel`, `judul`, `isi`, `id_kategori`, `status`, `img`, `tgl_pembuatan`) VALUES
+(59, 'Cara dapat Beasiswa', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aliquid nam non perferendis excepturi nisi dolore error aspernatur reprehenderit cum et deserunt odio voluptates eos quasi, incidunt quod a dolor.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aliquid nam non perferendis excepturi nisi dolore error aspernatur reprehenderit cum et deserunt odio voluptates eos quasi, incidunt quod a dolor.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aliquid nam non perferendis excepturi nisi dolore error aspernatur reprehenderit cum et deserunt odio voluptates eos quasi, incidunt quod a dolor.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aliquid nam non perferendis excepturi nisi dolore error aspernatur reprehenderit cum et deserunt odio voluptates eos quasi, incidunt quod a dolor.</p>\r\n', 3, 'Draft', 'artikel_1671523891.jpg', ''),
+(60, 'Ternyata Beasiswa itu Gampang', '<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem, laudantium ut alias reiciendis, ipsam odit tenetur at nostrum dolore quo tempore vel? Ipsam porro debitis quam ex voluptates dolor tenetur?</p>\r\n\r\n<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem, laudantium ut alias reiciendis, ipsam odit tenetur at nostrum dolore quo tempore vel? Ipsam porro debitis quam ex voluptates dolor tenetur?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem, laudantium ut alias reiciendis, ipsam odit tenetur at nostrum dolore quo tempore vel? Ipsam porro debitis quam ex voluptates dolor tenetur?</p>\r\n\r\n<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem, laudantium ut alias reiciendis, ipsam odit tenetur at nostrum dolore quo tempore vel? Ipsam porro debitis quam ex voluptates dolor tenetur?</p>\r\n\r\n<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem, laudantium ut alias reiciendis, ipsam odit tenetur at nostrum dolore quo tempore vel? Ipsam porro debitis quam ex voluptates dolor tenetur?</p>\r\n', 4, 'Publish', 'artikel_1671524787.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -210,15 +157,6 @@ CREATE TABLE `tbl_essay` (
   `isi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `tbl_essay`
---
-
-INSERT INTO `tbl_essay` (`id_essay`, `id_praja`, `judul`, `isi`) VALUES
-(10, 15, 'Judul Essay', '<p><strong>Judul essay&nbsp;</strong></p>\r\n'),
-(11, 16, 'Baru Nih', '<p>Ini adalah essay baru saya uuuuuu</p>\r\n'),
-(12, 16, 'Judul Kedua', '<p>Test</p>\r\n');
-
 -- --------------------------------------------------------
 
 --
@@ -235,7 +173,8 @@ CREATE TABLE `tbl_kategori` (
 --
 
 INSERT INTO `tbl_kategori` (`id_kategori`, `nama_kategori`) VALUES
-(2, 'Pemrograman');
+(3, 'Beasiswa'),
+(4, 'Internasional');
 
 -- --------------------------------------------------------
 
@@ -265,8 +204,7 @@ CREATE TABLE `tbl_login` (
 --
 
 INSERT INTO `tbl_login` (`id_login`, `anggota_id`, `user`, `pass`, `level`, `nama`, `tempat_lahir`, `tgl_lahir`, `jenkel`, `alamat`, `telepon`, `email`, `tgl_bergabung`, `foto`) VALUES
-(15, 'AG001', 'admin', '0192023a7bbd73250516f069df18b500', 'Petugas', 'Admin', 'garut', '1997-07-21', 'Laki-Laki', 'test', '085223661144', 'super.admin@gmail.com', '2022-12-06', 'user_1670391778.jpeg'),
-(16, 'AG0016', 'hendri', '202cb962ac59075b964b07152d234b70', 'Praja', 'hendri', 'Garut', '1997-07-21', 'Laki-Laki', 'test', '085223661144', 'anwarsptr@gmail.com', '2022-12-06', 'user_1670315370.jpeg');
+(15, 'AG001', 'admin', '0192023a7bbd73250516f069df18b500', 'Petugas', 'Admin', 'garut', '1997-07-21', 'Laki-Laki', 'test', '085223661144', 'super.admin@gmail.com', '2022-12-06', 'user_1670391778.jpeg');
 
 -- --------------------------------------------------------
 
@@ -352,7 +290,8 @@ ALTER TABLE `table_content`
 -- Indexes for table `tbl_artikel`
 --
 ALTER TABLE `tbl_artikel`
-  ADD PRIMARY KEY (`id_artikel`);
+  ADD PRIMARY KEY (`id_artikel`),
+  ADD KEY `id_kategori` (`id_kategori`);
 
 --
 -- Indexes for table `tbl_biaya_denda`
@@ -416,7 +355,7 @@ ALTER TABLE `tbl_tentang_kami`
 -- AUTO_INCREMENT for table `table_comment`
 --
 ALTER TABLE `table_comment`
-  MODIFY `comment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `comment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `table_content`
@@ -428,7 +367,7 @@ ALTER TABLE `table_content`
 -- AUTO_INCREMENT for table `tbl_artikel`
 --
 ALTER TABLE `tbl_artikel`
-  MODIFY `id_artikel` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_artikel` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `tbl_biaya_denda`
@@ -452,19 +391,19 @@ ALTER TABLE `tbl_denda`
 -- AUTO_INCREMENT for table `tbl_essay`
 --
 ALTER TABLE `tbl_essay`
-  MODIFY `id_essay` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_essay` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_kategori`
 --
 ALTER TABLE `tbl_kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tbl_pinjam`
@@ -483,6 +422,16 @@ ALTER TABLE `tbl_rak`
 --
 ALTER TABLE `tbl_tentang_kami`
   MODIFY `id_tentang_kami` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tbl_artikel`
+--
+ALTER TABLE `tbl_artikel`
+  ADD CONSTRAINT `tbl_artikel_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `tbl_kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
