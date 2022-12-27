@@ -151,7 +151,7 @@
                 <div class="row g-5">
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="section-title position-relative mb-1 pb-2">
-                            <h6 class="position-relative text-primary ps-4">Tentang Kami</h6>
+                            <!--<h6 class="position-relative text-primary ps-4">Tentang Kami</h6>-->
                             <h2 class="mt-2">Sistem Informasi & Monitoring Beasiswa (SIMOSA)</h2>
                         </div>
                         <p class="mb-1"><?= $tentang_kami->keterangan; ?></p>

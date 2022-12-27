@@ -134,12 +134,15 @@ class Essay extends CI_Controller
 
         $d = $this->db->query("SELECT * FROM tbl_login WHERE id_login = '$idbo'")->row_array();
 
+        $tgl = date("Y-m-d");
+
         if ($this->session->userdata('level') == 'Praja') {
             if ($this->input->post('method') === "update") {
                 $data = array(
                     'judul' => $this->input->post('judul'),
                     'id_praja' => $this->data['idbo'] = $this->session->userdata('ses_id'),
-                    'isi' => $this->input->post('essay')
+                    'isi' => $this->input->post('essay'),
+                    'tgl_post'=> $tgl
                 );
                 $this->db->where('id_essay', $this->input->post('id_essay'));
                 $this->db->update('tbl_essay', $data);

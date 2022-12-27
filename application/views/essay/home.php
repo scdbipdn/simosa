@@ -39,10 +39,21 @@ $bulan_tes = array(
 					<div class="box-body">
 						<div class="table-responsive">
 
-							<div class="box-header with-border">
-								<a href="<?= base_url("essay/show_edit/") ?>"><button class="btn btn-primary bg-merah teks-putih"><i class="fa fa-plus"> </i> Tambah Essay</button></a>
-							</div>
+							
 
+							<div class="row">
+								<div class="col-md-6" style='padding:70px'>
+									<h1 class="text-danger" style="font-weight:bold; font-size:46px;">Belum Ada Essay</h1>
+									<p>Klik <b class="text-danger">Buat Essay</b> untuk menambahkan Essay.</p>
+									<a href="<?= base_url("essay/show_edit/") ?>"><button class="btn btn-primary bg-merah teks-putih"><i class="fa fa-plus"> </i> Buat Essay</button></a>
+								</div>
+								<div class="col-md-6">
+									<center>
+										<img width="80%" src="<?= base_url('assets_style/image/logo/jalan-kosong.png');?>" alt="">
+									</center>
+								</div>
+							</div>
+							<!--
 							<table id="example1" class="table table-bordered table-striped table" width="100%">
 								<thead>
 									<tr class=' bg-merah teks-putih'>
@@ -81,6 +92,7 @@ $bulan_tes = array(
 									} ?>
 								</tbody>
 							</table>
+							-->
 						</div>
 						<script>
 							CKEDITOR.replace('essay')
