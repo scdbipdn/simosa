@@ -78,7 +78,7 @@ class Essay extends CI_Controller
         $id_praja = $this->data['idbo'] = $this->session->userdata('ses_id');
 
         if ($this->session->userdata('level') == 'Praja') {
-            $this->data['essay'] = $this->db->query("SELECT  tbl_login.nama, tbl_essay.id_essay, tbl_essay.judul, tbl_essay.id_praja
+            $this->data['essay'] = $this->db->query("SELECT  tbl_login.nama, tbl_essay.id_essay, tbl_essay.judul, tbl_essay.id_praja, tbl_essay.tgl_post
 				FROM tbl_essay INNER JOIN tbl_login ON tbl_login.id_login = tbl_essay.id_praja WHERE tbl_essay.id_praja = $id_praja");
         } else {
             $id_praja = $this->uri->segment(3);
@@ -86,9 +86,20 @@ class Essay extends CI_Controller
             FROM tbl_essay INNER JOIN tbl_login ON tbl_login.id_login = tbl_essay.id_praja WHERE tbl_essay.id_praja = $id_praja");
         }
 
+        $hitungId = $this->M_Admin->CountTableId('tbl_essay', 'id_praja', $id_praja);
+
+        if ($hitungId==0) 
+        {
+            $hal = "essay/no-essay";
+        }
+        else
+        {
+            $hal = "essay/home";   
+        }
+
         $this->load->view('header_view', $this->data);
         $this->load->view('sidebar_view', $this->data);
-        $this->load->view('essay/home', $this->data);
+        $this->load->view($hal, $this->data);
         $this->load->view('footer_view', $this->data);
     }
 
@@ -97,11 +108,12 @@ class Essay extends CI_Controller
     {
         $this->data['title_web'] = 'Data Essay ';
         $id_praja = $this->data['idbo'] = $this->session->userdata('ses_id');
+        $id_essay = $this->uri->segment(3);
+        $id_praja_admin = $this->uri->segment(4);
 
         //jika belum input essay
         if (!empty($this->uri->segment(3))) {
-            $id_essay = $this->uri->segment(3);
-            $id_praja_admin = $this->uri->segment(4);
+           
 
             if ($this->session->userdata('level') == 'Praja') {
                 $this->data['essay'] = $this->db->query("SELECT * FROM tbl_essay WHERE id_essay = $id_essay AND id_praja = $id_praja")->row_array();
@@ -123,7 +135,7 @@ class Essay extends CI_Controller
 
         $this->load->view('header_view', $this->data);
         $this->load->view('sidebar_view', $this->data);
-        $this->load->view('essay/show_edit', $this->data);
+        $this->load->view('essay/show-edit', $this->data);
         $this->load->view('footer_view', $this->data);
     }
 
@@ -179,7 +191,9 @@ class Essay extends CI_Controller
                 $data = array(
                     'judul' => $this->input->post('judul'),
                     'id_praja' => $this->data['idbo'] = $this->session->userdata('ses_id'),
-                    'isi' => $this->input->post('essay')
+                    'isi' => $this->input->post('essay'),
+                    'tgl_post'=> $tgl
+
                 );
                 $this->db->insert('tbl_essay', $data);
 

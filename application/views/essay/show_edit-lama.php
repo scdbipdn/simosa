@@ -18,20 +18,7 @@
 
 <?php
 $d = $this->db->query("SELECT * FROM tbl_login WHERE id_login='$idbo'")->row();
-$bulan_tes = array(
-	'01' => "Januari",
-	'02' => "Februari",
-	'03' => "Maret",
-	'04' => "April",
-	'05' => "Mei",
-	'06' => "Juni",
-	'07' => "Juli",
-	'08' => "Agustus",
-	'09' => "September",
-	'10' => "Oktober",
-	'11' => "November",
-	'12' => "Desember"
-);
+
 ?>
 <div class="content-wrapper" style='padding:20px;'>
 	<section class="content-header">
@@ -152,10 +139,10 @@ $bulan_tes = array(
 									<button class="btn btn-lg bg-orange-gelap" type="submit">Kirim Komentar</button>
 								</div>
 							</form>
-
+							<!--
 							<?php
 							$content_id =  $essay["id_essay"];
-							$query = $this->db->query("SELECT * FROM table_comment WHERE comment_status='0' AND comment_content_id = '$content_id' ORDER BY comment_id DESC");
+							$query = $this->db->query("SELECT * FROM table_comment WHERE comment_content_id = '$content_id' ORDER BY comment_id DESC");
 							foreach ($query->result() as $utama) :
 							?>
 
@@ -201,6 +188,7 @@ $bulan_tes = array(
 
 
 						<?php } ?>
+								-->
 						<!--komentar-->
 					</div>
 					<br>

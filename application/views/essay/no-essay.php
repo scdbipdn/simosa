@@ -37,21 +37,64 @@ $bulan_tes = array(
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
-						
-                        <div class="row">
-                            <div class="col-md-6" style='padding:70px'>
-                                <h1 class="text-danger" style="font-weight:bold; font-size:46px;">Belum Ada Essay</h1>
-                                <p>Klik <b class="text-danger">Buat Essay</b> untuk menambahkan Essay.</p>
-                                <a href="<?= base_url("essay/show_edit/") ?>"><button class="btn btn-primary bg-merah teks-putih"><i class="fa fa-plus"> </i> Buat Essay</button></a>
-                            </div>
-                            <div class="col-md-6">
-                                <center>
-                                    <img width="80%" src="<?= base_url('assets_style/image/logo/jalan-kosong.png');?>" alt="">
-                                </center>
-                            </div>
+						<div class="row">
+							<div class="col-md-6 padding-100">
+								<h1 class="text-danger" style="font-weight:bold; font-size:46px; color:navy;">Belum Ada Essay</h1>
+								<font size="4">
+									<p>Klik <b class="text-danger">Buat Essay</b> untuk menambahkan Essay.</p>
+								</font>
+								<a href="<?= base_url("essay/show_edit/") ?>"><button class="btn btn-primary bg-merah teks-putih btn-lg"><i class="fa fa-pencil" aria-hidden="true"></i> </i> Buat Essay</button></a>
+							</div>
+							<div class="col-md-6">
+								<center>
+									<img width="80%" src="<?= base_url('assets_style/image/logo/jalan-kosong.png');?>" alt="">
+								</center>
+							</div>
 						</div>
+						<!--
+						<table id="example1" class="table table-bordered table-striped table" width="100%">
+							<thead>
+								<tr class=' bg-merah teks-putih'>
+									<th>No</th>
+									<th>Judul</th>
+									<th>Penulis</th>
+									<th>Aksi</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+								$no = 1;
+								foreach ($essay->result_array() as $isi) {
+									$anggota_id = $isi['id_praja'];
+									$ang = $this->db->query("SELECT * FROM tbl_login WHERE anggota_id = '$anggota_id'")->row();
+								?>
+									<tr>
+										<td><?= $no; ?></td>
+										<td><?= $isi['judul']; ?></td>
+										<td><?= $isi['nama']; ?></td>
+										<td>
+											<?php if ($this->session->userdata('level') == 'Petugas') { ?>
+												<a href="<?= base_url('essay/show_edit/' . $isi['id_essay'] . '/' . $isi['id_praja']); ?>" class="btn btn-primary bg-biru btn-sm" title="detail pinjam">
+													<i class="fa fa-eye"></i> Detail Essay</a>
+												<a href="<?= base_url('essay/prosespinjam?id_essay=' . $isi['id_essay']); ?>" onclick="return confirm('Anda yakin menghapus essay ini ?');" class="btn btn-danger btn-sm" title="hapus pinjam">
+													<i class="fa fa-trash"></i></a>
+											<?php } else { ?>
+												<a href="<?= base_url('essay/show_edit/' . $isi['id_essay']); ?>" class="btn btn-primary bg-biru btn-sm" title="detail pinjam">
+													<i class="fa fa-eye"></i> Detail Essay</a>
+											<?php } ?>
+										</td>
+										</td>
 
+									</tr>
+								<?php $no++;
+								} ?>
+							</tbody>
+						</table>
+						-->
 					</div>
+					<script>
+						CKEDITOR.replace('essay')
+					</script>
 				</div>
 			</div>
 		</div>
