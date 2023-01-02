@@ -32,8 +32,11 @@ class Dashboard extends CI_Controller
 	 */
 	public function index()
 	{
-		$this->data['idbo'] = $this->session->userdata('ses_id');
 		$this->data['title_web'] = 'Dashboard ';
+		$idUser = $this->session->userdata('ses_id');
+		$this->data['idbo'] = $idUser;
+
+		
 		$this->data['count_pengguna'] = $this->db->query("SELECT * FROM tbl_login WHERE level = 'Praja'")->num_rows();
 		$this->data['count_buku'] = $this->db->query("SELECT * FROM tbl_buku")->num_rows();
 		$this->data['count_pinjam'] = $this->db->query("SELECT * FROM tbl_pinjam WHERE status = 'Dipinjam'")->num_rows();

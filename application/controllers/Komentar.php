@@ -97,7 +97,7 @@ class Komentar extends CI_Controller
 
             if ($this->session->userdata('level') == 'Praja') {
                 $this->db->query("INSERT INTO table_comment VALUES('','$idEssay', '$id_praja','$isi_komentar', '$tgl_komen', NULL, 'Belum Baca')");
-                redirect(base_url('essay/show_edit/' . $id));
+                redirect(base_url('essay/show_edit/' . $idEssay . '/' . $id_praja));
             } else {
                 $this->db->query("INSERT INTO table_comment VALUES('','$idEssay', '$id_praja','$isi_komentar', '$tgl_komen', 'Belum Baca', NULL)");
                 redirect(base_url('essay/show_edit/' . $idEssay . '/' . $id_praja));

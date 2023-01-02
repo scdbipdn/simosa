@@ -8,6 +8,27 @@ class M_Admin extends CI_Model
     //validasi jika user belum login
   }
 
+  function hitungKomenPraja($id)
+  {
+    $sql = "SELECT COUNT(komentar) FROM table_comment WHERE id_komentator = '$id' AND baca_praja='Belum Baca'";
+    $que = $this->db->query($sql);
+    return "Jumlahnya $id ". $que->rows()->komen;
+  }
+
+  function hitungKomenAdmin($id)
+  {
+    $sql = "SELECT *FROM table_comment WHERE id_komentator = '$id' AND baca_reviewer='Belum Baca'";
+    $que = $this->db->query($sql);
+    return $que->num_rows();
+  }
+
+  function userLogin($id)
+  {
+    $sql = "SELECT *FROM tbl_login WHERE id_login = '$id'";
+    $que = $this->db->query($sql);
+    return $que->row()->level;
+  }
+
   function get_table($table_name)
   {
     $get_user = $this->db->get_where($table_name, ['level' => 'Praja']);

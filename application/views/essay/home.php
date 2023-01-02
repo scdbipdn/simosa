@@ -71,7 +71,7 @@
 
 									if ($bacaan==0) 
 									{
-										$jumlahKomen = "";
+										$jumlahKomen = "Belum ada komentar";
 									}
 									else
 									{
@@ -86,7 +86,7 @@
 										<td><?= $no; ?></td>
 										<td><?= $isi['judul']; ?></td>
 										<td><?= $isi['nama']; ?></td>
-										<td align="center"><?= $komenan." ".$jumlahKomen ?></td>
+										<td align="center"><?= $jumlahKomen ?></td>
 										<td align="center"><?= $publikasi ?></td>
 										<td>
 											<?php if ($this->session->userdata('level') == 'Petugas') { ?>

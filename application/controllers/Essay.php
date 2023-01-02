@@ -76,6 +76,7 @@ class Essay extends CI_Controller
 
     public function show()
     {
+        
         $this->data['title_web'] = 'Data Essay ';
         $id_praja = $this->data['idbo'] = $this->session->userdata('ses_id');
 
@@ -126,6 +127,7 @@ class Essay extends CI_Controller
 
         $komentar = $this->db->query($sqlKomen)->result();
         $this->data['komentar'] = $komentar;
+        $this->data['id_perloginan'] = $id_praja;
 
         $level = $this->session->userdata('level');
 
@@ -139,7 +141,16 @@ class Essay extends CI_Controller
                 $this->data['essay'] = $this->db->query("SELECT * FROM tbl_essay WHERE id_essay = $id_essay AND id_praja = $id_praja")->row_array();
                 $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_praja")->row_array();
             } elseif ($level == 'Petugas') {
-                $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_praja")->row_array();
+               // $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_praja")->row_array();
+                $essayPraja = "SELECT *FROM tbl_essay WHERE id_essay='$id_essay'";
+                $esP = $this->db->query($essayPraja)->result();
+
+                foreach ($esP as $e) 
+                {
+                    $idP = $e->id_praja;
+                }
+
+                $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $idP")->row_array();
                 $this->data['essay'] = $this->db->query("SELECT * FROM tbl_essay WHERE id_essay = $id_essay")->row_array();
             } else {
                 $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_praja_admin")->row_array();

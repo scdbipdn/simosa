@@ -173,24 +173,18 @@ $d = $this->db->query("SELECT * FROM tbl_login WHERE id_login='$idbo'")->row();
                                 </li>
                             
                             <?php
-
-                                 endforeach;
-                               
+                                endforeach;             
                             ?>
-
-                           
-                                
+                                                  
                         </ul>
                             <!--komentar-->
-
-                         
-						
                             <!--kolom komentar-->
 							<h4 class='text-danger'>Kolom Komentar:</h4>
 							<form method="POST" action="<?= site_url('komentar/kirim') ?>">
 								<div class="w3-row-padding">
 									<div class="w3-half">
-										<input type="hidden" value="<?= $data_praja["id_login"]; ?>" name="id_praja">
+										<!--<input type="hidden" value="<?= $data_praja["id_login"]; ?>" name="id_praja">-->
+                                        <input type="hidden" value="<?= $id_perloginan; ?>" name="id_praja">
 										<input type="hidden" value="<?= $essay["id_essay"]; ?>" name="id_essay">
 										<input class="w3-input w3-border" type="hidden" placeholder="Nama" name="nama" value="<?= $d->nama ?>">
 									</div>
@@ -215,27 +209,27 @@ $d = $this->db->query("SELECT * FROM tbl_login WHERE id_login='$idbo'")->row();
                                     # code...
                                 
                         ?>
-                             <!--kolom komentar-->
-							<h4 class='text-danger'>Kolom Komentar:</h4>
-							<form method="POST" action="<?= site_url('komentar/kirim') ?>">
-								<div class="w3-row-padding">
-									<div class="w3-half">
-										<input type="hidden" value="<?= $data_praja["id_login"]; ?>" name="id_praja">
-										<input type="hidden" value="<?= $essay["id_essay"]; ?>" name="id_essay">
-										<input class="w3-input w3-border" type="hidden" placeholder="Nama" name="nama" value="<?= $d->nama ?>">
-									</div>
-									<div class="w3-half">
-										<input class="w3-input w3-border" type="hidden" placeholder="Email" name="email" value="<?= $d->email ?>">
-									</div>
-								</div>
-								<div class="w3-padding">
-                                    <textarea style="width: 100%;" name="isi" placeholder="Isikan komentar disini"></textarea>
-								</div>
-								<div class="w3-padding">
-									<button class="btn btn-lg bg-orange-gelap" type="submit">Kirim Komentar</button>
-								</div>
-							</form>
-                            <!--kolom komentar-->
+                                    <!--kolom komentar-->
+                                    <h4 class='text-danger'>Kolom Komentar:</h4>
+                                    <form method="POST" action="<?= site_url('komentar/kirim') ?>">
+                                        <div class="w3-row-padding">
+                                            <div class="w3-half">
+                                                <input type="hidden" value="<?= $id_perloginan; ?>" name="id_praja">
+                                                <input type="hidden" value="<?= $essay["id_essay"]; ?>" name="id_essay">
+                                                <input class="w3-input w3-border" type="hidden" placeholder="Nama" name="nama" value="<?= $d->nama ?>">
+                                            </div>
+                                            <div class="w3-half">
+                                                <input class="w3-input w3-border" type="hidden" placeholder="Email" name="email" value="<?= $d->email ?>">
+                                            </div>
+                                        </div>
+                                        <div class="w3-padding">
+                                            <textarea style="width: 100%;" name="isi" placeholder="Isikan komentar disini"></textarea>
+                                        </div>
+                                        <div class="w3-padding">
+                                            <button class="btn btn-lg bg-orange-gelap" type="submit">Kirim Komentar</button>
+                                        </div>
+                                    </form>
+                                    <!--kolom komentar-->
                         <?php
                                 }
                             }
