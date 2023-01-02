@@ -47,7 +47,7 @@ class Komentar extends CI_Controller
         $data['content_id']     = $content['content_id'];
         $this->load->view('view_content', $data);
     }
-
+    /* yang lama
     public function kirim()
     {
         $id_praja       = $this->input->post('id_praja');
@@ -69,6 +69,38 @@ class Komentar extends CI_Controller
                 redirect(base_url('essay/show_edit/' . $id));
             } else {
                 redirect(base_url('essay/show_edit/' . $id . '/' . $id_praja));
+            }
+        }
+    }
+    */
+
+    public function kirim()
+    {
+        $id_praja       = $this->input->post('id_praja');
+        $id             = $this->input->post('id');
+        $nama           = $this->input->post('nama');
+        $email          = $this->input->post('email');
+        $isi_komentar   = $this->input->post('isi');
+
+        $idEssay        = $this->input->post('id_essay');
+
+        $tgl_komen      = date("Y-m-d");
+
+        if ($isi_komentar === "") {
+            if ($this->session->userdata('level') == 'Praja') {
+                redirect(base_url('essay/show_edit/' . $id));
+            } else {
+                redirect(base_url('essay/show_edit/' . $id . '/' . $id_praja));
+            }
+        } else {
+            //$this->db->query("INSERT INTO table_comment VALUES('','$idEssay', NULL,'$isi_komentar', '$id_praja', '$tgl_komen', 'Belum Baca', NULL)");
+
+            if ($this->session->userdata('level') == 'Praja') {
+                $this->db->query("INSERT INTO table_comment VALUES('','$idEssay', '$id_praja','$isi_komentar', '$tgl_komen', NULL, 'Belum Baca')");
+                redirect(base_url('essay/show_edit/' . $id));
+            } else {
+                $this->db->query("INSERT INTO table_comment VALUES('','$idEssay', '$id_praja','$isi_komentar', '$tgl_komen', 'Belum Baca', NULL)");
+                redirect(base_url('essay/show_edit/' . $idEssay . '/' . $id_praja));
             }
         }
     }

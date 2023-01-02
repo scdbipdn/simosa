@@ -1,5 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script acess allowed'); ?>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- include summernote css/js -->
 <style type="text/css">
 	.child {
 		margin-left: 50px;
@@ -83,13 +84,19 @@ $d = $this->db->query("SELECT * FROM tbl_login WHERE id_login='$idbo'")->row();
 					<!-- /.box-header -->
 					<div class="box-body">
 
+                        <?php
+                            
+                        ?>
+
 						<form action="<?php echo base_url('essay/simpan'); ?>" method="POST" enctype="multipart/form-data">
-							<?php if ($essay) {
+							<?php 
+                            if ($essay) {
 								echo "<input type='hidden' name='method' id='method' value='update' class='form-control' readonly>";
 								echo "<input type='hidden' name='id_essay' id='id_essay' value='" . $essay['id_essay'] . "' class='form-control' readonly>";
 							} else {
 								echo "<input type='hidden' name='method' id='method' value='new' class='form-control' readonly>";
-							} ?>
+							}?>
+                            <input type='hidden' name='id_essay' id='id_essay' value='<?= !empty($essay['id_essay']) ? $essay['id_essay'] : ""; ?>' class='form-control' readonly>
 							<div class="form-group">
 								<label>
 									<h4>
@@ -114,17 +121,77 @@ $d = $this->db->query("SELECT * FROM tbl_login WHERE id_login='$idbo'")->row();
 						</form>
 
 						<hr>
+                        <ul class="media-list">
 
+                            <?php
+                                if (!empty($komentar)) 
+                                {
+                                    foreach($komentar as $kom):
+                                    
 
-						<!--komentar-->
+                                        $foto = $kom->foto;
+                                        $idUs = $kom->id_komentator;
+                                        $nama = $kom->nama;
+                                        $level= $kom->level;
+                                        $komen= $kom->komentar;
+                                        $tgl  = date('d F Y', strtotime($kom->tgl_komen));
+
+                                        $gambar = "assets_style/image/".$foto;
+
+                                        if ($level=="Petugas") 
+                                        {
+                                            $label = "label-primary";
+                                        } 
+                                        else 
+                                        {
+                                            $label = "label-warning";
+                                        }
+                                        
+                                        if ($idUs==$idbo) 
+                                        {
+                                            $media = "bg-white";
+                                        }
+                                        else
+                                        {
+                                            $media = "bg-info";
+                                        }
+                            ?>
+
+                                <li class="media <?= $media?>">
+                                    <div class="media-left">
+                                    <a href="#">
+                                        <img width="64" height="64" class="media-objek" src="<?= base_url("$gambar"); ?>" alt="...">
+                                    </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><?= $nama ?></h4>
+                                        <p><span class="label <?= $label; ?>"><?= $level ?></span> <span><font color='dimgray' size='1'>Komentar pada <?= $tgl?></font></span></p>
+                                        <p>
+                                            <?= $komen ?>
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                            <?php
+
+                                 endforeach;
+                               
+                            ?>
+
+                           
+                                
+                        </ul>
+                            <!--komentar-->
+
+                         
 						
                             <!--kolom komentar-->
 							<h4 class='text-danger'>Kolom Komentar:</h4>
-							<form method="POST" action="<?php echo site_url('komentar/kirim') ?>">
+							<form method="POST" action="<?= site_url('komentar/kirim') ?>">
 								<div class="w3-row-padding">
 									<div class="w3-half">
-										<input type="hidden" value="<?php echo $data_praja["id_login"]; ?>" name="id_praja">
-										<input type="hidden" value="<?php echo $essay["id_essay"]; ?>" name="id">
+										<input type="hidden" value="<?= $data_praja["id_login"]; ?>" name="id_praja">
+										<input type="hidden" value="<?= $essay["id_essay"]; ?>" name="id_essay">
 										<input class="w3-input w3-border" type="hidden" placeholder="Nama" name="nama" value="<?= $d->nama ?>">
 									</div>
 									<div class="w3-half">
@@ -132,13 +199,47 @@ $d = $this->db->query("SELECT * FROM tbl_login WHERE id_login='$idbo'")->row();
 									</div>
 								</div>
 								<div class="w3-padding">
-									<textarea style="width: 100%;" name="isi" placeholder="Isikan komentar disini"></textarea>
+                                    <textarea style="width: 100%;" name="isi" placeholder="Isikan komentar disini"></textarea>
 								</div>
 								<div class="w3-padding">
 									<button class="btn btn-lg bg-orange-gelap" type="submit">Kirim Komentar</button>
 								</div>
 							</form>
                             <!--kolom komentar-->
+                        <?php
+                            }
+                            else 
+                            {
+                                if ($level=='Petugas') 
+                                {
+                                    # code...
+                                
+                        ?>
+                             <!--kolom komentar-->
+							<h4 class='text-danger'>Kolom Komentar:</h4>
+							<form method="POST" action="<?= site_url('komentar/kirim') ?>">
+								<div class="w3-row-padding">
+									<div class="w3-half">
+										<input type="hidden" value="<?= $data_praja["id_login"]; ?>" name="id_praja">
+										<input type="hidden" value="<?= $essay["id_essay"]; ?>" name="id_essay">
+										<input class="w3-input w3-border" type="hidden" placeholder="Nama" name="nama" value="<?= $d->nama ?>">
+									</div>
+									<div class="w3-half">
+										<input class="w3-input w3-border" type="hidden" placeholder="Email" name="email" value="<?= $d->email ?>">
+									</div>
+								</div>
+								<div class="w3-padding">
+                                    <textarea style="width: 100%;" name="isi" placeholder="Isikan komentar disini"></textarea>
+								</div>
+								<div class="w3-padding">
+									<button class="btn btn-lg bg-orange-gelap" type="submit">Kirim Komentar</button>
+								</div>
+							</form>
+                            <!--kolom komentar-->
+                        <?php
+                                }
+                            }
+                        ?>
 
 						<!--komentar-->
 					</div>
@@ -155,3 +256,4 @@ $d = $this->db->query("SELECT * FROM tbl_login WHERE id_login='$idbo'")->row();
 </div>
 </section>
 </div>
+

@@ -37,7 +37,9 @@ class Essay extends CI_Controller
     {
         $this->data['title_web'] = 'Data Pinjam Buku ';
         $this->data['idbo'] = $this->session->userdata('ses_id');
+        $id_essay = $this->uri->segment(3);
 
+       
         if ($this->session->userdata('level') == 'Anggota') {
             $this->data['pinjam'] = $this->db->query(
                 "SELECT DISTINCT `pinjam_id`, `anggota_id`, 
@@ -48,7 +50,7 @@ class Essay extends CI_Controller
             );
         } else {
             if (!empty($this->uri->segment(3))) {
-                $id_essay = $this->uri->segment(3);
+                
                 if ($this->session->userdata('level') == 'Petugas') {
                     $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_essay")->row_array();
                     $this->data['essay'] = $this->db->query("SELECT * FROM tbl_essay WHERE id_praja = $id_essay")->row_array();
@@ -77,12 +79,17 @@ class Essay extends CI_Controller
         $this->data['title_web'] = 'Data Essay ';
         $id_praja = $this->data['idbo'] = $this->session->userdata('ses_id');
 
-        if ($this->session->userdata('level') == 'Praja') {
+        $level = $this->session->userdata('level');
+
+        $this->data['level'] = $level;
+
+        if ($level == 'Praja') {
             $this->data['essay'] = $this->db->query("SELECT  tbl_login.nama, tbl_essay.id_essay, tbl_essay.judul, tbl_essay.id_praja, tbl_essay.tgl_post
 				FROM tbl_essay INNER JOIN tbl_login ON tbl_login.id_login = tbl_essay.id_praja WHERE tbl_essay.id_praja = $id_praja");
+           
         } else {
             $id_praja = $this->uri->segment(3);
-            $this->data['essay'] = $this->db->query("SELECT  tbl_login.nama, tbl_essay.id_essay, tbl_essay.judul, tbl_essay.id_praja
+            $this->data['essay'] = $this->db->query("SELECT  tbl_login.nama, tbl_essay.id_essay, tbl_essay.judul, tbl_essay.id_praja, tbl_essay.tgl_post
             FROM tbl_essay INNER JOIN tbl_login ON tbl_login.id_login = tbl_essay.id_praja WHERE tbl_essay.id_praja = $id_praja");
         }
 
@@ -111,15 +118,28 @@ class Essay extends CI_Controller
         $id_essay = $this->uri->segment(3);
         $id_praja_admin = $this->uri->segment(4);
 
+        $sqlKomen = "SELECT *FROM table_comment 
+                        INNER JOIN tbl_login ON table_comment.id_komentator = tbl_login.id_login
+                        WHERE table_comment.id_essay = '$id_essay'
+                        ORDER BY table_comment.id_komen DESC
+                    ";
+
+        $komentar = $this->db->query($sqlKomen)->result();
+        $this->data['komentar'] = $komentar;
+
+        $level = $this->session->userdata('level');
+
+        $this->data['level'] = $level;
+
         //jika belum input essay
         if (!empty($this->uri->segment(3))) {
            
 
-            if ($this->session->userdata('level') == 'Praja') {
+            if ($level == 'Praja') {
                 $this->data['essay'] = $this->db->query("SELECT * FROM tbl_essay WHERE id_essay = $id_essay AND id_praja = $id_praja")->row_array();
                 $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_praja")->row_array();
-            } elseif ($this->session->userdata('level') == 'Petugas') {
-                $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_praja_admin")->row_array();
+            } elseif ($level == 'Petugas') {
+                $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_praja")->row_array();
                 $this->data['essay'] = $this->db->query("SELECT * FROM tbl_essay WHERE id_essay = $id_essay")->row_array();
             } else {
                 $this->data['data_praja'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login = $id_praja_admin")->row_array();

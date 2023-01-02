@@ -55,15 +55,38 @@
 									}
 									$idEssay = $isi['id_essay'] ;
 									$anggota_id = $isi['id_praja'];
+
+									$komenan = $this->db->query("SELECT count(id_essay) as isi FROM table_comment WHERE id_essay='$idEssay'")->row()->isi;
 									$ang = $this->db->query("SELECT * FROM tbl_login WHERE anggota_id = '$anggota_id'")->row();
 									$tung= $this->db->query("SELECT * FROM table_comment WHERE id_essay = '$idEssay'")->num_rows();
 
+									if ($level=='Praja') 
+									{
+										$bacaan = $this->db->query("SELECT count(id_essay) as bacaan FROM table_comment WHERE id_essay='$idEssay' AND baca_praja='Belum Baca'")->row()->bacaan;
+									}
+									else
+									{
+										$bacaan = $this->db->query("SELECT count(id_essay) as bacaan FROM table_comment WHERE id_essay='$idEssay' AND baca_reviewer='Belum Baca'")->row()->bacaan;
+									}
+
+									if ($bacaan==0) 
+									{
+										$jumlahKomen = "";
+									}
+									else
+									{
+										$jumlahKomen = "
+											<span class='label label-danger'>
+												$bacaan belum dibaca
+											</span>
+										";
+									}
 								?>
 									<tr>
 										<td><?= $no; ?></td>
 										<td><?= $isi['judul']; ?></td>
 										<td><?= $isi['nama']; ?></td>
-										<td align="center">Belum ada</td>
+										<td align="center"><?= $komenan." ".$jumlahKomen ?></td>
 										<td align="center"><?= $publikasi ?></td>
 										<td>
 											<?php if ($this->session->userdata('level') == 'Petugas') { ?>
